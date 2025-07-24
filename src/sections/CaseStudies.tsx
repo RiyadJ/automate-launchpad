@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, Clock, DollarSign, Users, ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const CaseStudies = () => {
+  const [currentCase, setCurrentCase] = useState(0);
+
   const caseStudies = [
     {
       company: "TechFlow Solutions",
