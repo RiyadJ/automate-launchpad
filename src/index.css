@@ -8,33 +8,40 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* aotumate.com color palette - Modern, Bold, Tech-focused */
+    --background: 216 20% 7%; /* #12131A - Dark gray/blue-black */
+    --foreground: 0 0% 100%; /* #FFFFFF - White for sharp text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 216 15% 10%; /* #191B23 - Slightly lighter dark for cards */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 216 15% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 243 84% 69%; /* #6466FA - Vivid bluish-violet */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 158 100% 54%; /* #12FFA2 - Aqua/mint for highlights */
+    --secondary-foreground: 216 20% 7%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 216 12% 14%; /* #22242C - Muted for subtle separation */
+    --muted-foreground: 225 14% 75%; /* #AEB4C0 - Cool light gray */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 158 100% 54%; /* #12FFA2 - Secondary accent */
+    --accent-foreground: 216 20% 7%;
+
+    --success: 145 85% 47%; /* #16D98D - Soft green for success states */
+    --success-foreground: 0 0% 100%;
+
+    --warning: 50 94% 64%; /* #F7D047 - Lemon yellow for urgent CTAs */
+    --warning-foreground: 216 20% 7%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 216 12% 14%; /* #22242C - Muted borders */
+    --input: 216 12% 14%;
+    --ring: 243 84% 69%;
 
     --radius: 0.5rem;
 
@@ -55,34 +62,41 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  .light {
+    /* Light theme variant for aotumate.com */
+    --background: 0 0% 98%; /* #FAFAFA - Light background */
+    --foreground: 216 20% 7%; /* #12131A - Dark text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%; /* #FFFFFF - White cards */
+    --card-foreground: 216 20% 7%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 20% 7%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 243 84% 69%; /* #6466FA - Keep primary consistent */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 158 100% 54%; /* #12FFA2 - Keep secondary consistent */
+    --secondary-foreground: 216 20% 7%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 94%; /* #F0F0F0 - Light muted */
+    --muted-foreground: 225 14% 45%; /* #757B8A - Darker gray for contrast */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 158 100% 54%;
+    --accent-foreground: 216 20% 7%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 145 85% 47%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --warning: 50 94% 64%;
+    --warning-foreground: 216 20% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%; /* #E6E6E6 - Light borders */
+    --input: 0 0% 96%;
+    --ring: 243 84% 69%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +115,64 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom animations for aotumate.com */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .gradient-surface {
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: hsla(var(--card), 0.75);
+    border: 1px solid hsla(var(--border), 0.3);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+  }
+  100% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.8);
   }
 }
