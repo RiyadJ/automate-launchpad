@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { BookerEmbed } from "@calcom/atoms";
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface BookingModalProps {
+interface CalcomBookerProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
+const CalcomBooker = ({ isOpen, onClose }: CalcomBookerProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -47,19 +47,19 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               </Button>
             </div>
             
-            {/* Cal.com Embed Placeholder */}
-            <div className="p-8 text-center">
-              <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground mb-2">Cal.com Integration</div>
-                  <p className="text-muted-foreground mb-4">
-                    This is a placeholder for the Cal.com booking widget.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    To implement: Install @calcom/atoms and replace this with BookerEmbed component
-                  </p>
-                </div>
-              </div>
+            {/* Cal.com Embed */}
+            <div className="p-4">
+              <BookerEmbed
+                eventSlug="30min"
+                username="aotumate"
+                customClassNames={{
+                  bookerContainer: "border-subtle border rounded-lg",
+                }}
+                onCreateBookingSuccess={() => {
+                  console.log("booking created successfully");
+                  onClose();
+                }}
+              />
             </div>
           </motion.div>
         </motion.div>
@@ -68,4 +68,4 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   );
 };
 
-export default BookingModal;
+export default CalcomBooker;

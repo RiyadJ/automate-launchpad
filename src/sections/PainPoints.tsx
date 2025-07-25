@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { AlertTriangle, Clock, DollarSign, Users, TrendingDown } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const PainPoints = () => {
+  const [language, setLanguage] = useState('EN');
+
+  useEffect(() => {
+    setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
+  }, []);
   const painPoints = [
     {
       icon: Clock,

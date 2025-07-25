@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
+import aotumateLogo from '@/assets/aotumate-logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-16">
           
           {/* Company Info */}
           <div className="space-y-4">
@@ -17,14 +18,16 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">A</span>
-              </div>
+              <img 
+                src={aotumateLogo} 
+                alt="aotumate logo" 
+                className="w-8 h-8"
+              />
               <span className="text-xl font-bold text-foreground">aotumate</span>
             </motion.div>
             
             <p className="text-muted-foreground leading-relaxed">
-              We eliminate repetitive tasks and human errors so your team can focus on what actually grows your business.
+              We eliminate repetitive tasks so your team can focus on what actually grows your business.
             </p>
             
             <div className="flex space-x-4">
@@ -45,28 +48,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Services</h3>
-            <ul className="space-y-3">
-              <li><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Process Automation</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">AI Customer Service</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Data Integration</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Custom Solutions</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Resources</h3>
-            <ul className="space-y-3">
-              <li><a href="#case-studies" className="text-muted-foreground hover:text-foreground transition-colors">Case Studies</a></li>
-              <li><a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Testimonials</a></li>
-              <li><a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a></li>
-            </ul>
-          </div>
-
           {/* Contact */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4">Contact</h3>
@@ -84,16 +65,6 @@ const Footer = () => {
                 <span>San Francisco, CA</span>
               </li>
             </ul>
-            
-            <div className="mt-6">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-4 py-2 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
-              >
-                Book Free Audit
-              </motion.button>
-            </div>
           </div>
         </div>
 

@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
 import aotumateLogo from '@/assets/aotumate-logo.png';
-import BookingModal from '@/components/ui/booking-modal';
+import CalcomBooker from '@/components/ui/calcom-booker';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [language, setLanguage] = useState('EN');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [showNavCTA, setShowNavCTA] = useState(false);
 
   // Initialize theme based on system preference
   useEffect(() => {
@@ -18,6 +19,18 @@ const Header = () => {
     if (!systemPrefersDark) {
       document.documentElement.classList.add('light');
     }
+
+    // Check for scroll to show/hide nav CTA
+    const handleScroll = () => {
+      const heroCTA = document.getElementById('hero-cta');
+      if (heroCTA) {
+        const rect = heroCTA.getBoundingClientRect();
+        setShowNavCTA(rect.bottom < 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -93,6 +106,22 @@ const Header = () => {
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
+            {/* CTA Button - show only after scrolling past hero CTA */}
+            {showNavCTA && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+              >
+                <Button 
+                  onClick={() => setIsBookingOpen(true)}
+                  className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
+                >
+                  {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
+                </Button>
+              </motion.div>
+            )}
+
             {/* Theme Toggle */}
             <Button
               variant="ghost"
@@ -122,14 +151,6 @@ const Header = () => {
             >
               <Globe className="h-4 w-4" />
               <span className="text-xs">{language}</span>
-            </Button>
-
-            {/* CTA Button */}
-            <Button 
-              onClick={() => setIsBookingOpen(true)}
-              className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
-            >
-              {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -189,7 +210,7 @@ const Header = () => {
       </div>
 
       {/* Booking Modal */}
-      <BookingModal 
+      <CalcomBooker 
         isOpen={isBookingOpen} 
         onClose={() => setIsBookingOpen(false)} 
       />
