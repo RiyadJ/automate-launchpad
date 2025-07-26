@@ -1,7 +1,7 @@
-import { BookerEmbed } from "@calcom/atoms";
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
 
 interface CalcomBookerProps {
   isOpen: boolean;
@@ -9,6 +9,24 @@ interface CalcomBookerProps {
 }
 
 const CalcomBooker = ({ isOpen, onClose }: CalcomBookerProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      // Load Cal.com embed script
+      const script = document.createElement('script');
+      script.src = 'https://app.cal.com/embed/embed.js';
+      script.async = true;
+      document.head.appendChild(script);
+
+      return () => {
+        // Cleanup script when component unmounts
+        const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
+        if (existingScript) {
+          document.head.removeChild(existingScript);
+        }
+      };
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -49,18 +67,11 @@ const CalcomBooker = ({ isOpen, onClose }: CalcomBookerProps) => {
             
             {/* Cal.com Embed */}
             <div className="p-4 min-h-[500px]">
-              <BookerEmbed
-                eventSlug="30min"
-                username="aotumate"
-                view="MONTH_VIEW"
-                customClassNames={{
-                  bookerContainer: "border-subtle border rounded-lg",
-                }}
-                onCreateBookingSuccess={() => {
-                  console.log("booking created successfully");
-                  onClose();
-                }}
-              />
+              <div 
+                data-cal-link="aotumate/30min"
+                data-cal-config='{"layout":"month_view"}'
+                className="w-full h-full min-h-[500px] rounded-lg"
+              ></div>
             </div>
           </motion.div>
         </motion.div>
