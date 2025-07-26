@@ -3,13 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
 import aotumateLogo from '@/assets/aotumate-logo.png';
-import CalcomBooker from '@/components/ui/calcom-booker';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [language, setLanguage] = useState('EN');
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [showNavCTA, setShowNavCTA] = useState(false);
 
   // Initialize theme based on system preference
@@ -114,7 +112,7 @@ const Header = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
               >
                 <Button 
-                  onClick={() => setIsBookingOpen(true)}
+                  onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
                   className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
                 >
                   {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
@@ -199,7 +197,7 @@ const Header = () => {
                 {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
               </button>
               <Button 
-                onClick={() => setIsBookingOpen(true)}
+                onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
                 className="bg-warning text-warning-foreground hover:bg-warning/90 w-full"
               >
                 {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
@@ -209,11 +207,6 @@ const Header = () => {
         )}
       </div>
 
-      {/* Booking Modal */}
-      <CalcomBooker 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-      />
     </motion.header>
   );
 };

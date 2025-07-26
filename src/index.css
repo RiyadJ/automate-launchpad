@@ -190,3 +190,12 @@ All colors MUST be HSL.
     opacity: 0;
   }
 }
+
+@keyframes text-shine {
+  0%, 100% { 
+    background-position: -200% center;
+  }
+  50% { 
+    background-position: 200% center;
+  }
+}

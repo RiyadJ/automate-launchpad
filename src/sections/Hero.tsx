@@ -2,11 +2,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Zap, Clock, TrendingUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import CalcomBooker from '@/components/ui/calcom-booker';
 
 const Hero = () => {
   const [currentLetter, setCurrentLetter] = useState('o');
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [language, setLanguage] = useState('EN');
   
   useEffect(() => {
@@ -121,14 +119,14 @@ const Hero = () => {
                 t
                 <AnimatePresence mode="wait">
                   <motion.span
-                    key={`second-${currentLetter}`}
-                    initial={{ y: 20, opacity: 0, rotateX: 90 }}
+                    key={`second-${currentLetter === 'o' ? 'u' : 'o'}`}
+                    initial={{ y: -20, opacity: 0, rotateX: -90 }}
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: -20, opacity: 0, rotateX: -90 }}
+                    exit={{ y: 20, opacity: 0, rotateX: 90 }}
                     transition={{ duration: 0.5 }}
                     className="inline-block"
                   >
-                    {currentLetter}
+                    {currentLetter === 'o' ? 'u' : 'o'}
                   </motion.span>
                 </AnimatePresence>
                 mate Your Business.
@@ -186,7 +184,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              onClick={() => setIsBookingOpen(true)}
+              onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
               className="bg-warning text-warning-foreground hover:bg-warning/90 px-8 py-4 text-lg font-semibold animate-pulse-glow group"
             >
               {language === 'AR' ? 'احصل على تدقيق مجاني للأتمتة' : 'Get Your Free Automation Audit'}
@@ -227,17 +225,16 @@ const Hero = () => {
               {language === 'AR' ? 'موثوق من قبل' : 'Trusted by'}
             </p>
             <div className="overflow-hidden relative max-w-4xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_3s_ease-in-out_infinite] pointer-events-none z-10"></div>
               <motion.div
-                animate={{ x: [0, -100] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                animate={{ x: [0, -1848] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="flex space-x-12 whitespace-nowrap"
               >
-                {[...Array(5)].map((_, setIndex) => 
+                {[...Array(4)].map((_, setIndex) => 
                   ['TechFlow Inc', 'DataSync Corp', 'AutoFlow Solutions', 'GrowthLab', 'StreamlineHQ', 'InnovateCorp'].map((company, index) => (
                     <span
                       key={`${company}-${setIndex}-${index}`}
-                      className="text-muted-foreground font-medium text-lg px-6"
+                      className="text-muted-foreground font-medium text-lg px-6 animate-[text-shine_4s_ease-in-out_infinite]"
                     >
                       {company}
                     </span>
@@ -261,11 +258,6 @@ const Hero = () => {
         className="absolute bottom-40 right-20 w-20 h-20 bg-secondary/20 rounded-full blur-xl"
       />
       
-      {/* Cal.com Booking Modal */}
-      <CalcomBooker 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-      />
     </section>
   );
 };
