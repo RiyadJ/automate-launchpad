@@ -97,12 +97,14 @@ const Hero = () => {
           >
             {language === 'AR' ? (
               <>
-                أتمت عملك.<br />
+                لا عمل يدوي.<br />
                 استرد وقتك.<br />
-                تخلص من العمل اليدوي.
+                أتمت عملك.
               </>
             ) : (
               <>
+                No Manual Work.<br />
+                Reclaim Your Time.<br />
                 A
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -116,9 +118,20 @@ const Hero = () => {
                     {currentLetter}
                   </motion.span>
                 </AnimatePresence>
-                tomate Your Business.<br />
-                Reclaim Your Time.<br />
-                Eliminate Manual Work.
+                t
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={`second-${currentLetter}`}
+                    initial={{ y: 20, opacity: 0, rotateX: 90 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    exit={{ y: -20, opacity: 0, rotateX: -90 }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block"
+                  >
+                    {currentLetter}
+                  </motion.span>
+                </AnimatePresence>
+                mate Your Business.
               </>
             )}
           </motion.h1>
@@ -214,12 +227,13 @@ const Hero = () => {
               {language === 'AR' ? 'موثوق من قبل' : 'Trusted by'}
             </p>
             <div className="overflow-hidden relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_3s_ease-in-out_infinite] pointer-events-none z-10"></div>
               <motion.div
-                animate={{ x: [0, -1200] }}
+                animate={{ x: [0, -100] }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 className="flex space-x-12 whitespace-nowrap"
               >
-                {[...Array(3)].map((_, setIndex) => 
+                {[...Array(5)].map((_, setIndex) => 
                   ['TechFlow Inc', 'DataSync Corp', 'AutoFlow Solutions', 'GrowthLab', 'StreamlineHQ', 'InnovateCorp'].map((company, index) => (
                     <span
                       key={`${company}-${setIndex}-${index}`}

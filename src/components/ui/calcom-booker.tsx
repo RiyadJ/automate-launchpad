@@ -48,10 +48,11 @@ const CalcomBooker = ({ isOpen, onClose }: CalcomBookerProps) => {
             </div>
             
             {/* Cal.com Embed */}
-            <div className="p-4">
+            <div className="p-4 min-h-[500px]">
               <BookerEmbed
                 eventSlug="30min"
                 username="aotumate"
+                view="MONTH_VIEW"
                 customClassNames={{
                   bookerContainer: "border-subtle border rounded-lg",
                 }}
