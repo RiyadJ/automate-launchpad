@@ -177,21 +177,16 @@ All colors MUST be HSL.
   }
 }
 
-@keyframes text-shine {
+@keyframes shine {
   0% {
-    background: linear-gradient(90deg, transparent, transparent);
-    background-clip: text;
-    -webkit-background-clip: text;
+    transform: translateX(-100%);
+    opacity: 0;
   }
   50% {
-    background: linear-gradient(90deg, transparent, hsl(var(--primary)) 50%, transparent);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    opacity: 1;
   }
   100% {
-    background: linear-gradient(90deg, transparent, transparent);
-    background-clip: text;
-    -webkit-background-clip: text;
+    transform: translateX(400%);
+    opacity: 0;
   }
 }

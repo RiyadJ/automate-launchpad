@@ -6,14 +6,12 @@ import CalcomBooker from '@/components/ui/calcom-booker';
 
 const Hero = () => {
   const [currentLetter, setCurrentLetter] = useState('o');
-  const [counterLetter, setCounterLetter] = useState('u');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [language, setLanguage] = useState('EN');
   
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentLetter(prev => prev === 'o' ? 'u' : 'o');
-      setCounterLetter(prev => prev === 'u' ? 'o' : 'u');
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -76,7 +74,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-left">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,14 +121,14 @@ const Hero = () => {
                 t
                 <AnimatePresence mode="wait">
                   <motion.span
-                    key={`second-${counterLetter}`}
+                    key={`second-${currentLetter}`}
                     initial={{ y: 20, opacity: 0, rotateX: 90 }}
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
                     exit={{ y: -20, opacity: 0, rotateX: -90 }}
                     transition={{ duration: 0.5 }}
                     className="inline-block"
                   >
-                    {counterLetter}
+                    {currentLetter}
                   </motion.span>
                 </AnimatePresence>
                 mate Your Business.
@@ -156,7 +154,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap justify-start gap-8 mb-12"
+            className="flex flex-wrap justify-center gap-8 mb-12"
           >
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Clock className="w-5 h-5 text-primary" />
@@ -183,7 +181,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-start items-start"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             id="hero-cta"
           >
             <Button 
@@ -229,16 +227,17 @@ const Hero = () => {
               {language === 'AR' ? 'موثوق من قبل' : 'Trusted by'}
             </p>
             <div className="overflow-hidden relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shine_3s_ease-in-out_infinite] pointer-events-none z-10"></div>
               <motion.div
-                animate={{ x: [0, -1800] }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                animate={{ x: [0, -100] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 className="flex space-x-12 whitespace-nowrap"
               >
-                {[...Array(6)].map((_, setIndex) => 
+                {[...Array(5)].map((_, setIndex) => 
                   ['TechFlow Inc', 'DataSync Corp', 'AutoFlow Solutions', 'GrowthLab', 'StreamlineHQ', 'InnovateCorp'].map((company, index) => (
                     <span
                       key={`${company}-${setIndex}-${index}`}
-                      className="text-muted-foreground font-medium text-lg px-6 animate-[text-shine_3s_ease-in-out_infinite]"
+                      className="text-muted-foreground font-medium text-lg px-6"
                     >
                       {company}
                     </span>
