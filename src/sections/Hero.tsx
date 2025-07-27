@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Clock, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap, Clock, TrendingUp, Bot, GitBranch, Workflow, Play, Webhook, Activity } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentLetter(prev => prev === 'o' ? 'u' : 'o');
-    }, 2000);
+    }, 4000); // Increased from 2000ms to 4000ms for longer interval
     return () => clearInterval(interval);
   }, []);
 
@@ -37,33 +37,82 @@ const Hero = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#automation-grid)" />
           
-          {/* Automation nodes */}
-          <circle cx="200" cy="150" r="15" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.6" />
-          <circle cx="600" cy="300" r="15" fill="none" stroke="hsl(var(--secondary))" strokeWidth="2" opacity="0.6" />
-          <circle cx="1000" cy="200" r="15" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.6" />
-          <circle cx="400" cy="600" r="15" fill="none" stroke="hsl(var(--secondary))" strokeWidth="2" opacity="0.6" />
-          <circle cx="800" cy="500" r="15" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.6" />
+          {/* Automation icons */}
+          <foreignObject x="185" y="135" width="30" height="30">
+            <Bot className="w-6 h-6 text-primary opacity-70" />
+          </foreignObject>
+          <foreignObject x="585" y="285" width="30" height="30">
+            <GitBranch className="w-6 h-6 text-secondary opacity-70" />
+          </foreignObject>
+          <foreignObject x="985" y="185" width="30" height="30">
+            <Workflow className="w-6 h-6 text-primary opacity-70" />
+          </foreignObject>
+          <foreignObject x="385" y="585" width="30" height="30">
+            <Webhook className="w-6 h-6 text-secondary opacity-70" />
+          </foreignObject>
+          <foreignObject x="785" y="485" width="30" height="30">
+            <Activity className="w-6 h-6 text-primary opacity-70" />
+          </foreignObject>
+          <foreignObject x="300" y="400" width="30" height="30">
+            <Play className="w-6 h-6 text-secondary opacity-70" />
+          </foreignObject>
+          <foreignObject x="1100" y="350" width="30" height="30">
+            <Zap className="w-6 h-6 text-primary opacity-70" />
+          </foreignObject>
           
-          {/* Animated connection lines */}
+          {/* Animated connection lines with more turns and fade-out effect */}
           <motion.path
-            d="M-100,150 L200,150 L600,300 L1000,200 L1540,250"
+            d="M-100,150 L200,150 L300,400 L600,300 L1000,200 L1100,350 L1540,250"
             stroke="hsl(var(--primary))"
             strokeWidth="2"
             fill="none"
-            opacity="0.5"
-            initial={{ pathLength: 0, pathOffset: 0 }}
-            animate={{ pathLength: 1, pathOffset: 0 }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            initial={{ pathLength: 0, opacity: 0.5 }}
+            animate={{ 
+              pathLength: [0, 1, 1, 1],
+              opacity: [0, 0.5, 0.5, 0]
+            }}
+            transition={{ 
+              duration: 16, 
+              repeat: Infinity, 
+              ease: "linear",
+              times: [0, 0.7, 0.9, 1]
+            }}
           />
           <motion.path
-            d="M-100,600 L400,600 L800,500 L1200,400 L1540,350"
+            d="M-100,600 L400,600 L500,450 L800,500 L950,300 L1200,400 L1540,350"
             stroke="hsl(var(--secondary))"
             strokeWidth="2"
             fill="none"
-            opacity="0.4"
-            initial={{ pathLength: 0, pathOffset: 0 }}
-            animate={{ pathLength: 1, pathOffset: 0 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 3 }}
+            initial={{ pathLength: 0, opacity: 0.4 }}
+            animate={{ 
+              pathLength: [0, 1, 1, 1],
+              opacity: [0, 0.4, 0.4, 0]
+            }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity, 
+              ease: "linear", 
+              delay: 4,
+              times: [0, 0.7, 0.9, 1]
+            }}
+          />
+          <motion.path
+            d="M-100,400 L250,400 L350,250 L650,350 L750,600 L1150,500 L1540,450"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1.5"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0.3 }}
+            animate={{ 
+              pathLength: [0, 1, 1, 1],
+              opacity: [0, 0.3, 0.3, 0]
+            }}
+            transition={{ 
+              duration: 18, 
+              repeat: Infinity, 
+              ease: "linear", 
+              delay: 8,
+              times: [0, 0.7, 0.9, 1]
+            }}
           />
         </svg>
       </div>
