@@ -37,32 +37,45 @@ const Hero = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#automation-grid)" />
           
-          {/* Automation icons */}
-          <foreignObject x="185" y="135" width="30" height="30">
-            <Bot className="w-6 h-6 text-primary opacity-70" />
+          {/* Automation icons with void circles */}
+          <circle cx="200" cy="150" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="188" y="138" width="24" height="24">
+            <Bot className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          <foreignObject x="585" y="285" width="30" height="30">
-            <GitBranch className="w-6 h-6 text-secondary opacity-70" />
+          
+          <circle cx="600" cy="300" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="588" y="288" width="24" height="24">
+            <GitBranch className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          <foreignObject x="985" y="185" width="30" height="30">
-            <Workflow className="w-6 h-6 text-primary opacity-70" />
+          
+          <circle cx="1000" cy="200" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="988" y="188" width="24" height="24">
+            <Workflow className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          <foreignObject x="385" y="585" width="30" height="30">
-            <Webhook className="w-6 h-6 text-secondary opacity-70" />
+          
+          <circle cx="400" cy="600" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="388" y="588" width="24" height="24">
+            <Webhook className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          <foreignObject x="785" y="485" width="30" height="30">
-            <Activity className="w-6 h-6 text-primary opacity-70" />
+          
+          <circle cx="800" cy="500" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="788" y="488" width="24" height="24">
+            <Activity className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          <foreignObject x="300" y="400" width="30" height="30">
-            <Play className="w-6 h-6 text-secondary opacity-70" />
+          
+          <circle cx="315" cy="415" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="303" y="403" width="24" height="24">
+            <Play className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          <foreignObject x="1100" y="350" width="30" height="30">
-            <Zap className="w-6 h-6 text-primary opacity-70" />
+          
+          <circle cx="1115" cy="365" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
+          <foreignObject x="1103" y="353" width="24" height="24">
+            <Zap className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
           {/* Animated connection lines with more turns and fade-out effect */}
           <motion.path
-            d="M-100,150 L200,150 L300,400 L600,300 L1000,200 L1100,350 L1540,250"
+            d="M-100,150 L200,150 L315,415 L600,300 L1000,200 L1115,365 L1540,250"
             stroke="hsl(var(--primary))"
             strokeWidth="2"
             fill="none"
@@ -79,7 +92,7 @@ const Hero = () => {
             }}
           />
           <motion.path
-            d="M-100,600 L400,600 L500,450 L800,500 L950,300 L1200,400 L1540,350"
+            d="M-100,600 L400,600 L315,415 L800,500 L1000,200 L1115,365 L1540,350"
             stroke="hsl(var(--secondary))"
             strokeWidth="2"
             fill="none"
@@ -97,7 +110,7 @@ const Hero = () => {
             }}
           />
           <motion.path
-            d="M-100,400 L250,400 L350,250 L650,350 L750,600 L1150,500 L1540,450"
+            d="M-100,400 L200,150 L600,300 L800,500 L400,600 L1115,365 L1540,450"
             stroke="hsl(var(--primary))"
             strokeWidth="1.5"
             fill="none"
