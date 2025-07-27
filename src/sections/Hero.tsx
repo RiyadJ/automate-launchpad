@@ -288,11 +288,11 @@ const Hero = () => {
             </p>
             <div className="overflow-hidden relative max-w-4xl mx-auto">
               <motion.div
-                animate={{ x: [0, -1848] }}
+                animate={{ x: [0, -924] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="flex space-x-12 whitespace-nowrap"
               >
-                {[...Array(4)].map((_, setIndex) => 
+                {[...Array(2)].map((_, setIndex) => 
                   ['TechFlow Inc', 'DataSync Corp', 'AutoFlow Solutions', 'GrowthLab', 'StreamlineHQ', 'InnovateCorp'].map((company, index) => (
                     <span
                       key={`${company}-${setIndex}-${index}`}
