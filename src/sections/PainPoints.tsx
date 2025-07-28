@@ -92,23 +92,6 @@ const PainPoints = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-8 rounded-xl bg-gradient-to-r from-destructive/10 to-primary/10 border border-destructive/20"
-        >
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Sound Familiar? You're Not Alone.
-          </h3>
-          <p className="text-lg text-muted-foreground mb-6">
-            95% of businesses we work with were losing $50,000+ annually to manual processes before they found us.
-          </p>
-          <p className="text-lg font-semibold text-foreground">
-            The question is: How much longer can you afford to wait?
-          </p>
-        </motion.div>
       </div>
     </section>
   );

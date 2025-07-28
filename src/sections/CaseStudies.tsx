@@ -188,27 +188,6 @@ const CaseStudies = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16 p-8 rounded-xl bg-gradient-to-r from-success/10 to-primary/10 border border-success/20"
-        >
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Your Success Story Could Be Next
-          </h3>
-          <p className="text-lg text-muted-foreground mb-6">
-            Every business is unique, but the results are always the same: more time, less errors, higher profits.
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
-          >
-            Start Your Success Story
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );

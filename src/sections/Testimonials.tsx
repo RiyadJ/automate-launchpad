@@ -171,55 +171,6 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-8 rounded-xl bg-card border border-border">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Average Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-secondary mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Would Recommend</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-success mb-2">$590K+</div>
-              <div className="text-sm text-muted-foreground">Total Savings Generated</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-warning mb-2">30 Days</div>
-              <div className="text-sm text-muted-foreground">Average Time to ROI</div>
-            </div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-8 p-6 rounded-xl bg-gradient-to-r from-success/10 to-primary/10 border border-success/20"
-          >
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <CheckCircle className="w-5 h-5 text-success" />
-              <span className="font-semibold text-foreground">Join 100+ Successful Businesses</span>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              Every client gets measurable results within 30 days. Your success story could be next.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
-            >
-              Start Your Success Story
-            </motion.button>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );
