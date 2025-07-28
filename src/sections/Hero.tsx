@@ -135,25 +135,13 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-success/20 text-success border border-success/30 mb-8"
-          >
-            <Zap className="w-4 h-4 mr-2" />
-            <span className="text-sm font-medium">
-              {language === 'AR' ? 'موثوق به من أكثر من 100 شركة نامية' : 'Trusted by 100+ Growing Businesses'}
-            </span>
-          </motion.div>
 
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight font-space-grotesk"
           >
             {language === 'AR' ? (
               <>
@@ -200,8 +188,8 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
+            transition={{ delay: 0.3 }}
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-space-grotesk"
           >
             {language === 'AR' 
               ? 'نحن نصمم أنظمة الأتمتة المخصصة التي تقطع المهام المتكررة، وتقلل الأخطاء، وتحرر فريقك للتركيز على ما ينمي عملك فعلاً.'
@@ -213,7 +201,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.4 }}
             className="flex flex-wrap justify-center gap-8 mb-12"
           >
             <div className="flex items-center space-x-2 text-muted-foreground">
@@ -240,14 +228,14 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
             id="hero-cta"
           >
             <Button 
               size="lg" 
               onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
-              className="bg-warning text-warning-foreground hover:bg-warning/90 px-8 py-4 text-lg font-semibold animate-pulse-glow group"
+              className="bg-warning text-warning-foreground hover:bg-warning/90 px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold animate-pulse-glow group w-full sm:w-auto max-w-sm"
             >
               {language === 'AR' ? 'احصل على تدقيق مجاني للأتمتة' : 'Get Your Free Automation Audit'}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -257,7 +245,7 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               onClick={scrollToCaseStudies}
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 py-4 text-base sm:text-lg w-full sm:w-auto max-w-sm"
             >
               {language === 'AR' ? 'شاهد دراسات الحالة' : 'See Case Studies'}
             </Button>
@@ -267,7 +255,7 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.6 }}
             className="text-sm text-muted-foreground mt-8"
           >
             {language === 'AR' 
@@ -280,7 +268,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 0.7 }}
             className="mt-16"
           >
             <p className="text-sm text-muted-foreground mb-6">

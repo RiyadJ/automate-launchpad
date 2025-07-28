@@ -106,20 +106,23 @@ const Header = () => {
           {/* Controls */}
           <div className="flex items-center space-x-4">
             {/* CTA Button - show only after scrolling past hero CTA */}
-            {showNavCTA && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-              >
-                <Button 
-                  onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
-                  className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
+            <AnimatePresence>
+              {showNavCTA && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
-                </Button>
-              </motion.div>
-            )}
+                  <Button 
+                    onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
+                    className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
+                  >
+                    {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Theme Toggle */}
             <Button
@@ -199,7 +202,7 @@ const Header = () => {
               </button>
               <Button 
                 onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
-                className="bg-warning text-warning-foreground hover:bg-warning/90 w-full"
+                className="bg-warning text-warning-foreground hover:bg-warning/90 mx-4"
               >
                 {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
               </Button>
