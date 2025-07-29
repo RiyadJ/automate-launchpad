@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import aotumateLogo from '@/assets/aotumate-logo.png';
+// No longer importing the old logo
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,11 +68,11 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img 
-              src={aotumateLogo} 
+              src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
               alt="aotumate logo" 
               className="w-8 h-8"
             />
-            <span className="text-xl font-bold text-foreground">aotumate</span>
+            <span className="text-xl font-bold text-foreground font-space-grotesk">aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -99,7 +99,7 @@ const Header = () => {
               onClick={() => scrollToSection('faq')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+              {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQs'}
             </button>
           </nav>
 
@@ -198,7 +198,7 @@ const Header = () => {
                 onClick={() => scrollToSection('faq')}
                 className="text-muted-foreground hover:text-foreground transition-colors text-left"
               >
-                {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+                {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQs'}
               </button>
               <Button 
                 onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}

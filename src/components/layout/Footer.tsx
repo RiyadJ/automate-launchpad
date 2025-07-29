@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
-import aotumateLogo from '@/assets/aotumate-logo.png';
+// No longer importing the old logo
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,11 +19,11 @@ const Footer = () => {
               className="flex items-center space-x-2"
             >
               <img 
-                src={aotumateLogo} 
+                src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
                 alt="aotumate logo" 
                 className="w-8 h-8"
               />
-              <span className="text-xl font-bold text-foreground">aotumate</span>
+              <span className="text-xl font-bold text-foreground font-space-grotesk">aotumate</span>
             </motion.div>
             
             <p className="text-muted-foreground leading-relaxed">
