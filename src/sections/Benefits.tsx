@@ -42,7 +42,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-success/5 to-primary/5">
+    <section className="py-20 bg-gradient-to-b from-destructive/5 via-success/5 to-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -69,7 +69,7 @@ const Benefits = () => {
         </motion.div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -105,30 +105,6 @@ const Benefits = () => {
           ))}
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-6 p-8 rounded-xl bg-card border border-success/20"
-        >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-success mb-2">30 Days</div>
-            <div className="text-sm text-muted-foreground">To Full ROI</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">200 Hours</div>
-            <div className="text-sm text-muted-foreground">Saved Monthly</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-secondary mb-2">95%</div>
-            <div className="text-sm text-muted-foreground">Error Reduction</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-warning mb-2">∞</div>
-            <div className="text-sm text-muted-foreground">Scalability</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

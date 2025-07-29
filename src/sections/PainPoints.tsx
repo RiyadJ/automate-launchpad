@@ -36,7 +36,7 @@ const PainPoints = () => {
   ];
 
   return (
-    <section className="py-20 bg-destructive/5">
+    <section className="py-20 bg-gradient-to-b from-background via-destructive/5 to-destructive/5">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -61,7 +61,7 @@ const PainPoints = () => {
         </motion.div>
 
         {/* Pain Points Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {painPoints.map((pain, index) => (
             <motion.div
               key={index}
