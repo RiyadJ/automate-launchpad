@@ -11,35 +11,27 @@ const PainPoints = () => {
   const painPoints = [
     {
       icon: Clock,
-      title: language === 'AR' ? "فريقك يغرق في المهام المتكررة" : "Your Team Drowns in Repetitive Tasks",
-      description: language === 'AR' 
-        ? "أكثر من 40 ساعة شهرياً تُهدر في إدخال البيانات وإنتاج التقارير وسير العمل اليدوي التي يمكن للكمبيوتر القيام بها في دقائق."
-        : "40+ hours per month wasted on data entry, report generation, and manual workflows that a computer could do in minutes.",
-      stat: language === 'AR' ? "أكثر من 40 ساعة/شهر" : "40+ hours/month"
+      title: "Your Team Drowns in Repetitive Tasks",
+      description: "40+ hours per month wasted on data entry, report generation, and manual workflows that a computer could do in minutes.",
+      stat: "40+ hours/month"
     },
     {
       icon: DollarSign,
-      title: language === 'AR' ? "الأخطاء تكلفك أموالاً" : "Mistakes Cost You Money",
-      description: language === 'AR'
-        ? "كل عملية يدوية هي نقطة فشل محتملة. خطأ واحد في إدخال البيانات يمكن أن يكلف آلاف الدولارات في الإيرادات المفقودة وثقة العملاء."
-        : "Every manual process is a potential point of failure. One mistake in data entry can cost thousands in lost revenue and customer trust.",
-      stat: language === 'AR' ? "أكثر من $50K سنوياً" : "$50K+ annually"
+      title: "Human Errors Cost You Money",
+      description: "Every manual process is a potential point of failure. One mistake in data entry can cost thousands in lost revenue and customer trust.",
+      stat: "$50K+ annually"
     },
     {
       icon: Users,
-      title: language === 'AR' ? "أفضل موظفيك يعانون من الإرهاق" : "Your Best People Are Burning Out",
-      description: language === 'AR'
-        ? "الموظفون الموهوبون يقومون بعمل الروبوتات بدلاً من التفكير الاستراتيجي. إنهم محبطون، فاقدون للدافعية، ويبحثون عن المخرج."
-        : "Talented employees doing robot work instead of strategic thinking. They're frustrated, demotivated, and looking for the exit.",
-      stat: language === 'AR' ? "67% خطر استقالة" : "67% turnover risk"
+      title: "Your Best People Are Burning Out",
+      description: "Talented employees doing robot work instead of strategic thinking. They're frustrated, demotivated, and looking for the exit.",
+      stat: "67% turnover risk"
     },
     {
       icon: TrendingDown,
-      title: language === 'AR' ? "المنافسون يتحركون بشكل أسرع" : "Competitors Are Moving Faster",
-      description: language === 'AR'
-        ? "بينما تقوم بمعالجة الطلبات يدوياً وتحديث جداول البيانات، ينمو منافسوك بالأتمتة ويتركونك خلفهم."
-        : "While you're manually processing orders and updating spreadsheets, your competitors are scaling with automation and leaving you behind.",
-      stat: language === 'AR' ? "3x نمو أبطأ" : "3x slower growth"
+      title: "Competitors Are Moving Faster",
+      description: "While you're manually processing orders and updating spreadsheets, your competitors are scaling with automation and leaving you behind.",
+      stat: "3x slower growth"
     }
   ];
 
@@ -55,30 +47,16 @@ const PainPoints = () => {
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-destructive/20 text-destructive border border-destructive/30 mb-6">
             <AlertTriangle className="w-4 h-4 mr-2" />
-            <span className="text-sm font-medium">
-              {language === 'AR' ? 'التكلفة الخفية للعمل اليدوي' : 'The Hidden Cost of Manual Work'}
-            </span>
+            <span className="text-sm font-medium">The Hidden Cost of Manual Work</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            {language === 'AR' ? (
-              <>
-                كل يوم تنتظر فيه،{' '}
-                <span className="text-destructive">تخسر أموالاً</span>
-              </>
-            ) : (
-              <>
-                Every Day You Wait,{' '}
-                <span className="text-destructive">You're Losing Money</span>
-              </>
-            )}
+            Every Day You Wait,{' '}
+            <span className="text-destructive">You're Losing Money</span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {language === 'AR'
-              ? 'إليك ما تكلفه العمليات اليدوية فعلاً لعملك (ولماذا منافسوك الذين يؤتمتون يسحقونك):'
-              : "Here's what manual processes are REALLY costing your business (and why your competitors who automate are crushing you):"
-            }
+            Here's what manual processes are REALLY costing your business (and why your competitors who automate are crushing you):
           </p>
         </motion.div>
 
