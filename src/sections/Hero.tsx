@@ -37,101 +37,38 @@ const Hero = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#automation-grid)" />
           
-          {/* Automation icons with glowing circles */}
-          <motion.circle 
-            cx="200" cy="150" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0 }}
-          />
+          {/* Automation icons with void circles */}
+          <circle cx="200" cy="150" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="188" y="138" width="24" height="24">
             <Bot className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="600" cy="300" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-          />
+          <circle cx="600" cy="300" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="588" y="288" width="24" height="24">
             <GitBranch className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="1000" cy="200" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-          />
+          <circle cx="1000" cy="200" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="988" y="188" width="24" height="24">
             <Workflow className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="400" cy="600" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-          />
+          <circle cx="400" cy="600" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="388" y="588" width="24" height="24">
             <Webhook className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="800" cy="500" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 2 }}
-          />
+          <circle cx="800" cy="500" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="788" y="488" width="24" height="24">
             <Activity className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="315" cy="415" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 2.5 }}
-          />
+          <circle cx="315" cy="415" r="15" stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="303" y="403" width="24" height="24">
             <Play className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="1115" cy="365" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 3 }}
-          />
+          <circle cx="1115" cy="365" r="15" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" opacity="0.4" />
           <foreignObject x="1103" y="353" width="24" height="24">
             <Zap className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
@@ -270,15 +207,7 @@ const Hero = () => {
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Clock className="w-5 h-5 text-primary" />
               <span className="text-sm">
-                {language === 'AR' ? (
-                  <>
-                    <span className="text-warning font-bold">40-200</span> ساعة توفر شهرياً
-                  </>
-                ) : (
-                  <>
-                    <span className="text-warning font-bold">40-200</span> hours saved monthly
-                  </>
-                )}
+                {language === 'AR' ? '40-200 ساعة توفر شهرياً' : '40-200 hours saved monthly'}
               </span>
             </div>
             <div className="flex items-center space-x-2 text-muted-foreground">
