@@ -109,6 +109,9 @@ const Testimonials = () => {
             className="flex space-x-8"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            style={{
+              animationPlayState: isPaused ? 'paused' : 'running'
+            }}
           >
             {/* Duplicate testimonials for seamless loop */}
             {[...testimonials, ...testimonials].map((testimonial, index) => (
