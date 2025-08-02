@@ -112,10 +112,9 @@ const Testimonials = () => {
           >
             {/* Duplicate testimonials for seamless loop */}
             {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <motion.div
+              <div
                 key={`${testimonial.name}-${index}`}
                 className="flex-shrink-0 w-80 bg-card rounded-xl border border-border p-6 hover:border-primary/30 transition-colors cursor-pointer"
-                whileHover={{ y: -5 }}
               >
                 <div className="flex items-center mb-4">
                   <img
@@ -143,20 +142,11 @@ const Testimonials = () => {
                     {testimonial.testimonial}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Pause Indicator */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
-            {language === 'AR' 
-              ? 'مرر فوق أي بطاقة لإيقاف التمرير'
-              : 'Hover over any card to pause scrolling'
-            }
-          </p>
-        </div>
       </div>
     </section>
   );

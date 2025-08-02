@@ -73,9 +73,9 @@ const Header = () => {
             <img 
               src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
               alt="Aotumate logo" 
-              className="w-12 h-12 mr-1"
+              className="w-8 h-8"
             />
-            <span className="text-xl font-bold text-foreground font-space-grotesk">Aotumate</span>
+            <span className="text-xl font-bold text-foreground font-space-grotesk ml-1">Aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -85,12 +85,6 @@ const Header = () => {
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               {language === 'AR' ? 'خدماتنا' : 'Services'}
-            </button>
-            <button 
-              onClick={() => scrollToSection('case-studies')}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
@@ -184,12 +178,6 @@ const Header = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors text-left"
               >
                 {language === 'AR' ? 'خدماتنا' : 'Services'}
-              </button>
-              <button 
-                onClick={() => scrollToSection('case-studies')}
-                className="text-muted-foreground hover:text-foreground transition-colors text-left"
-              >
-                {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}

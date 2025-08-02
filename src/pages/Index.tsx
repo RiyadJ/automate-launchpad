@@ -4,7 +4,7 @@ import Hero from '@/sections/Hero';
 import PainPoints from '@/sections/PainPoints';
 import Benefits from '@/sections/Benefits';
 import Services from '@/sections/Services';
-import CaseStudies from '@/sections/CaseStudies';
+
 import Testimonials from '@/sections/Testimonials';
 import FAQ from '@/sections/FAQ';
 
@@ -17,7 +17,7 @@ const Index = () => {
         <PainPoints />
         <Benefits />
         <Services />
-        <CaseStudies />
+        
         <Testimonials />
         <FAQ />
       </main>

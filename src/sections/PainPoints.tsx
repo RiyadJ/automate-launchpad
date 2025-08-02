@@ -8,6 +8,7 @@ const PainPoints = () => {
   useEffect(() => {
     setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
   }, []);
+
   const painPoints = [
     {
       icon: Clock,
@@ -44,14 +45,14 @@ const PainPoints = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background via-destructive/5 to-destructive/5">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-destructive/20 text-destructive border border-destructive/30 mb-6">
             <AlertTriangle className="w-4 h-4 mr-2" />
@@ -60,60 +61,55 @@ const PainPoints = () => {
             </span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {language === 'AR' ? (
               <>
-                كل يوم تنتظر فيه،{' '}
-                <span className="text-destructive">تخسر أموالاً</span>
+                كل يوم تنتظر فيه، تخسر أموالاً
               </>
             ) : (
               <>
-                Every Day You Wait,{' '}
-                <span className="text-destructive">You're Losing Money</span>
+                Every Day You Wait, You're Losing Money
               </>
             )}
           </h2>
-          
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {language === 'AR'
-              ? 'إليك ما تكلفه العمليات اليدوية فعلاً لعملك (ولماذا منافسوك الذين يؤتمتون يسحقونك):'
-              : "Here's what manual processes are REALLY costing your business (and why your competitors who automate are crushing you):"
-            }
-          </p>
         </motion.div>
 
-        {/* Pain Points Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Vertical Pain Points Flow */}
+        <div className="max-w-2xl mx-auto">
           {painPoints.map((pain, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="p-8 rounded-xl bg-card border border-destructive/20 hover:border-destructive/40 transition-all"
+              className="relative flex items-start mb-8 last:mb-0"
             >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <pain.icon className="w-8 h-8 text-destructive" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-foreground mb-3">
-                    {pain.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {pain.description}
-                  </p>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-destructive/10 text-destructive text-sm font-semibold">
-                    Lost: {pain.stat}
-                  </div>
+              {/* Connector Line */}
+              {index < painPoints.length - 1 && (
+                <div className="absolute left-6 top-12 w-0.5 h-16 bg-destructive/30"></div>
+              )}
+              
+              {/* Icon */}
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-destructive/20 border-2 border-destructive/30 flex items-center justify-center mr-4">
+                <pain.icon className="w-5 h-5 text-destructive" />
+              </div>
+              
+              {/* Content */}
+              <div className="flex-1 pb-4">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {pain.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  {pain.description}
+                </p>
+                <div className="inline-flex items-center px-2 py-1 rounded-md bg-destructive/10 text-destructive text-xs font-medium">
+                  Lost: {pain.stat}
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

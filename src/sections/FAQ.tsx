@@ -38,16 +38,8 @@ const FAQ = () => {
       answer: "We start with a free automation audit to identify your highest-impact opportunities. We prioritize processes that are: repetitive, time-consuming, prone to delays, and performed frequently. This ensures maximum ROI from day one."
     },
     {
-      question: "What if my team resists the change to automation?",
-      answer: "We've never had a team complain about getting their time back. When employees stop doing boring, repetitive work and start doing meaningful, strategic work, resistance turns into enthusiasm. We also provide training to ensure smooth adoption."
-    },
-    {
       question: "Do I need technical knowledge to use the automations?",
       answer: "Not at all. We build everything to be user-friendly and often invisible. Your team continues working normally while automation handles the heavy lifting in the background. We provide simple dashboards for monitoring if needed."
-    },
-    {
-      question: "What's your guarantee if the automation doesn't work as promised?",
-      answer: "We offer a 30-day money-back guarantee. If you don't see measurable time savings and ROI within 30 days, we'll refund your investment completely. We're that confident in our results."
     },
     {
       question: "How long does it take to implement automation?",
@@ -81,16 +73,8 @@ const FAQ = () => {
       answer: "نبدأ بتدقيق مجاني للأتمتة لتحديد فرصك عالية التأثير. نحن نعطي الأولوية للعمليات التي هي: متكررة، مستهلكة للوقت، عرضة للتأخير، ويتم تنفيذها بشكل متكرر. هذا يضمن أقصى عائد استثمار من اليوم الأول."
     },
     {
-      question: "ماذا لو قاوم فريقي التغيير إلى الأتمتة؟",
-      answer: "لم نواجه أبداً فريقاً يشتكي من استرداد وقته. عندما يتوقف الموظفون عن القيام بعمل مملل ومتكرر ويبدؤون في القيام بعمل ذي معنى واستراتيجي، تتحول المقاومة إلى حماس. نحن نقدم أيضاً التدريب لضمان التبني السلس."
-    },
-    {
       question: "هل أحتاج معرفة تقنية لاستخدام الأتمتة؟",
       answer: "ليس على الإطلاق. نحن نبني كل شيء ليكون سهل الاستخدام وغالباً غير مرئي. يستمر فريقك في العمل بشكل طبيعي بينما تتولى الأتمتة العمل الثقيل في الخلفية. نقدم لوحات معلومات بسيطة للمراقبة إذا لزم الأمر."
-    },
-    {
-      question: "ما هو ضمانكم إذا لم تعمل الأتمتة كما وُعد؟",
-      answer: "نحن نقدم ضمان استرداد الأموال لمدة 30 يوماً. إذا لم تر توفيراً قابلاً للقياس في الوقت وعائد استثمار خلال 30 يوماً، سنسترد استثمارك بالكامل. نحن واثقون جداً من نتائجنا."
     },
     {
       question: "كم من الوقت يستغرق تنفيذ الأتمتة؟",
@@ -208,7 +192,7 @@ const FAQ = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => setIsBookingOpen(true)}
+            onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
             className="px-8 py-4 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
           >
             {language === 'AR' ? 'احصل على إجابات لأسئلتك' : 'Get Your Questions Answered'}
