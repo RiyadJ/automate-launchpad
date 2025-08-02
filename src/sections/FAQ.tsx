@@ -38,10 +38,6 @@ const FAQ = () => {
       answer: "We start with a free automation audit to identify your highest-impact opportunities. We prioritize processes that are: repetitive, time-consuming, prone to delays, and performed frequently. This ensures maximum ROI from day one."
     },
     {
-      question: "Do I need technical knowledge to use the automations?",
-      answer: "Not at all. We build everything to be user-friendly and often invisible. Your team continues working normally while automation handles the heavy lifting in the background. We provide simple dashboards for monitoring if needed."
-    },
-    {
       question: "How long does it take to implement automation?",
       answer: "Simple automations can be live within 48 hours. Complex, multi-step workflows typically take 1-2 weeks. We work in phases so you start seeing benefits immediately while we build more advanced features."
     }
@@ -71,10 +67,6 @@ const FAQ = () => {
     {
       question: "كيف نعرف العمليات التي يجب أتمتتها أولاً؟",
       answer: "نبدأ بتدقيق مجاني للأتمتة لتحديد فرصك عالية التأثير. نحن نعطي الأولوية للعمليات التي هي: متكررة، مستهلكة للوقت، عرضة للتأخير، ويتم تنفيذها بشكل متكرر. هذا يضمن أقصى عائد استثمار من اليوم الأول."
-    },
-    {
-      question: "هل أحتاج معرفة تقنية لاستخدام الأتمتة؟",
-      answer: "ليس على الإطلاق. نحن نبني كل شيء ليكون سهل الاستخدام وغالباً غير مرئي. يستمر فريقك في العمل بشكل طبيعي بينما تتولى الأتمتة العمل الثقيل في الخلفية. نقدم لوحات معلومات بسيطة للمراقبة إذا لزم الأمر."
     },
     {
       question: "كم من الوقت يستغرق تنفيذ الأتمتة؟",

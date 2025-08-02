@@ -73,9 +73,9 @@ const Header = () => {
             <img 
               src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
               alt="Aotumate logo" 
-              className="w-3 h-3"
+              className="w-5 h-5"
             />
-            <span className="text-xl font-bold text-foreground font-space-grotesk ml-0.5">Aotumate</span>
+            <span className="text-xl font-bold text-foreground font-space-grotesk ml-1">Aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}

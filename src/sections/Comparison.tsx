@@ -140,10 +140,11 @@ const Comparison = () => {
                   <div className="absolute left-6 top-12 w-0.5 h-16 bg-destructive/30 z-0"></div>
                 )}
                 
-                {/* Icon with glow effect */}
-                <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-destructive/20 border-2 border-destructive/30 flex items-center justify-center mr-4 z-10">
+                {/* Icon with enhanced glow effect */}
+                <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-destructive/20 border-2 border-destructive/40 flex items-center justify-center mr-4 z-10">
                   <comparison.manual.icon className="w-5 h-5 text-destructive" />
-                  <div className="absolute inset-0 rounded-full bg-destructive/10 blur-sm"></div>
+                  <div className="absolute inset-0 rounded-full bg-destructive/20 blur-md animate-pulse"></div>
+                  <div className="absolute inset-0 rounded-full bg-destructive/10 blur-lg"></div>
                 </div>
                 
                 {/* Content */}
@@ -182,15 +183,16 @@ const Comparison = () => {
                 transition={{ delay: index * 0.1 }}
                 className="relative flex items-start"
               >
-                {/* Connector Line */}
+                {/* Connector Line crossing through circle */}
                 {index < comparisons.length - 1 && (
-                  <div className="absolute left-6 top-12 w-0.5 h-16 bg-primary/30 z-0"></div>
+                  <div className="absolute left-6 top-6 w-0.5 h-20 bg-primary/40 z-0"></div>
                 )}
                 
-                {/* Icon with glow effect */}
-                <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 border-2 border-primary/30 flex items-center justify-center mr-4 z-10">
+                {/* Icon with enhanced glow effect */}
+                <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center mr-4 z-10">
                   <comparison.automated.icon className="w-5 h-5 text-primary" />
-                  <div className="absolute inset-0 rounded-full bg-primary/10 blur-sm"></div>
+                  <div className="absolute inset-0 rounded-full bg-primary/30 blur-md animate-pulse"></div>
+                  <div className="absolute inset-0 rounded-full bg-primary/15 blur-lg"></div>
                 </div>
                 
                 {/* Content */}
