@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Clock, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { ChevronRight, Clock, DollarSign, TrendingUp, Users, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 
@@ -182,37 +182,15 @@ const CaseStudies = () => {
                   </h4>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-lg bg-success/10 border border-success/20">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Clock className="w-5 h-5 text-success" />
-                        <span className="text-sm text-muted-foreground">Time Saved</span>
+                    {study.results.map((result, idx) => (
+                      <div key={idx} className="p-4 rounded-lg bg-success/10 border border-success/20">
+                        <div className="flex items-center space-x-2 mb-2">
+                          <result.icon className="w-5 h-5 text-success" />
+                          <span className="text-sm text-muted-foreground">{result.description}</span>
+                        </div>
+                        <div className="text-2xl font-bold text-success">{result.metric}</div>
                       </div>
-                      <div className="text-2xl font-bold text-success">{study.results.timeSaved}</div>
-                    </div>
-
-                    <div className="p-4 rounded-lg bg-secondary/10 border border-secondary/20">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <DollarSign className="w-5 h-5 text-secondary" />
-                        <span className="text-sm text-muted-foreground">Cost Savings</span>
-                      </div>
-                      <div className="text-2xl font-bold text-secondary">{study.results.costSavings}</div>
-                    </div>
-
-                    <div className="p-4 rounded-lg bg-primary/10 border border-primary/20">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <TrendingUp className="w-5 h-5 text-primary" />
-                        <span className="text-sm text-muted-foreground">Error Reduction</span>
-                      </div>
-                      <div className="text-2xl font-bold text-primary">{study.results.errorReduction}</div>
-                    </div>
-
-                    <div className="p-4 rounded-lg bg-warning/10 border border-warning/20">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Users className="w-5 h-5 text-warning" />
-                        <span className="text-sm text-muted-foreground">Scalability</span>
-                      </div>
-                      <div className="text-xl font-bold text-warning">{study.results.scalability}</div>
-                    </div>
+                    ))}
                   </div>
 
                   <div className="pt-6">
