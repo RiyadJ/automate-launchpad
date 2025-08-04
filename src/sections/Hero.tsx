@@ -269,17 +269,17 @@ const Hero = () => {
           >
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Clock className="w-5 h-5 text-primary" />
-              <span className="text-sm">
-                {language === 'AR' ? (
-                  <>
-                    <span className="text-warning font-bold">40-200</span> ساعة توفر شهرياً
-                  </>
-                ) : (
-                  <>
-                    <span className="text-warning font-bold">40-200</span> hours saved monthly
-                  </>
-                )}
-              </span>
+                <span className="text-sm">
+                  {language === 'AR' ? (
+                    <>
+                      <span className="font-bold">40-200</span> ساعة توفر شهرياً
+                    </>
+                  ) : (
+                    <>
+                      <span className="font-bold">40-200</span> hours saved monthly
+                    </>
+                  )}
+                </span>
             </div>
             <div className="flex items-center space-x-2 text-muted-foreground">
               <TrendingUp className="w-5 h-5 text-secondary" />
