@@ -8,6 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    color-scheme: dark;
     /* aotumate.com color palette - Modern, Bold, Tech-focused */
     --background: 216 20% 7%; /* #12131A - Dark gray/blue-black */
     --foreground: 0 0% 100%; /* #FFFFFF - White for sharp text */
@@ -63,6 +64,7 @@ All colors MUST be HSL.
   }
 
   .light {
+    color-scheme: light;
     /* Light theme variant for aotumate.com */
     --background: 0 0% 98%; /* #FAFAFA - Light background */
     --foreground: 216 20% 7%; /* #12131A - Dark text */
