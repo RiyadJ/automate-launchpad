@@ -37,29 +37,41 @@ const Hero = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#automation-grid)" />
           
-          {/* Automation icons with glowing circles */}
+          {/* Automation icons with intelligent glow on line contact */}
           <motion.circle 
             cx="200" cy="150" r="15" 
             stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
             opacity="0.4"
             animate={{ 
-              stroke: [
-                'hsl(var(--primary))', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary))'
-              ],
+              strokeWidth: [1, 2, 1],
               filter: [
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
+                'drop-shadow(0 0 12px hsl(var(--primary) / 0.6))', 
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))'
               ]
             }}
-            transition={{ duration: 16, repeat: Infinity, times: [0, 0.1, 0.8, 1] }}
+            transition={{ duration: 16, repeat: Infinity, times: [0, 0.2, 1] }}
           />
           <foreignObject x="188" y="138" width="24" height="24">
             <Bot className="w-6 h-6 text-primary opacity-90" />
+          </foreignObject>
+          
+          <motion.circle 
+            cx="315" cy="415" r="15" 
+            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
+            opacity="0.4"
+            animate={{ 
+              strokeWidth: [1, 2, 1],
+              filter: [
+                'drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 
+                'drop-shadow(0 0 12px hsl(var(--secondary) / 0.6))', 
+                'drop-shadow(0 0 0 hsl(var(--secondary) / 0))'
+              ]
+            }}
+            transition={{ duration: 16, repeat: Infinity, times: [0, 0.35, 1] }}
+          />
+          <foreignObject x="303" y="403" width="24" height="24">
+            <Play className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
           
           <motion.circle 
@@ -67,20 +79,14 @@ const Hero = () => {
             stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
             opacity="0.4"
             animate={{ 
-              stroke: [
-                'hsl(var(--secondary))', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary))'
-              ],
+              strokeWidth: [1, 2, 1],
               filter: [
                 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
+                'drop-shadow(0 0 12px hsl(var(--secondary) / 0.6))', 
                 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))'
               ]
             }}
-            transition={{ duration: 20, repeat: Infinity, delay: 4, times: [0, 0.05, 0.85, 1] }}
+            transition={{ duration: 16, repeat: Infinity, times: [0, 0.5, 1] }}
           />
           <foreignObject x="588" y="288" width="24" height="24">
             <GitBranch className="w-6 h-6 text-secondary opacity-90" />
@@ -91,23 +97,35 @@ const Hero = () => {
             stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
             opacity="0.4"
             animate={{ 
-              stroke: [
-                'hsl(var(--primary))', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary))'
-              ],
+              strokeWidth: [1, 2, 1],
               filter: [
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
+                'drop-shadow(0 0 12px hsl(var(--primary) / 0.6))', 
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))'
               ]
             }}
-            transition={{ duration: 16, repeat: Infinity, delay: 2, times: [0, 0.15, 0.75, 1] }}
+            transition={{ duration: 16, repeat: Infinity, times: [0, 0.6, 1] }}
           />
           <foreignObject x="988" y="188" width="24" height="24">
             <Workflow className="w-6 h-6 text-primary opacity-90" />
+          </foreignObject>
+          
+          <motion.circle 
+            cx="1115" cy="365" r="15" 
+            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
+            opacity="0.4"
+            animate={{ 
+              strokeWidth: [1, 2, 1],
+              filter: [
+                'drop-shadow(0 0 0 hsl(var(--primary) / 0))', 
+                'drop-shadow(0 0 12px hsl(var(--primary) / 0.6))', 
+                'drop-shadow(0 0 0 hsl(var(--primary) / 0))'
+              ]
+            }}
+            transition={{ duration: 16, repeat: Infinity, times: [0, 0.7, 1] }}
+          />
+          <foreignObject x="1103" y="353" width="24" height="24">
+            <Zap className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
           <motion.circle 
@@ -115,20 +133,14 @@ const Hero = () => {
             stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
             opacity="0.4"
             animate={{ 
-              stroke: [
-                'hsl(var(--secondary))', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary))'
-              ],
+              strokeWidth: [1, 2, 1],
               filter: [
                 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
+                'drop-shadow(0 0 12px hsl(var(--secondary) / 0.6))', 
                 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))'
               ]
             }}
-            transition={{ duration: 20, repeat: Infinity, delay: 8, times: [0, 0.05, 0.85, 1] }}
+            transition={{ duration: 20, repeat: Infinity, delay: 4, times: [0, 0.15, 1] }}
           />
           <foreignObject x="388" y="588" width="24" height="24">
             <Webhook className="w-6 h-6 text-secondary opacity-90" />
@@ -139,74 +151,20 @@ const Hero = () => {
             stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
             opacity="0.4"
             animate={{ 
-              stroke: [
-                'hsl(var(--primary))', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary))'
-              ],
+              strokeWidth: [1, 2, 1],
               filter: [
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
+                'drop-shadow(0 0 12px hsl(var(--primary) / 0.6))', 
                 'drop-shadow(0 0 0 hsl(var(--primary) / 0))'
               ]
             }}
-            transition={{ duration: 18, repeat: Infinity, delay: 10, times: [0, 0.1, 0.8, 1] }}
+            transition={{ duration: 20, repeat: Infinity, delay: 4, times: [0, 0.4, 1] }}
           />
           <foreignObject x="788" y="488" width="24" height="24">
             <Activity className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
           
-          <motion.circle 
-            cx="315" cy="415" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              stroke: [
-                'hsl(var(--secondary))', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary) / 0.8)', 
-                'hsl(var(--secondary))'
-              ],
-              filter: [
-                'drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
-                'drop-shadow(0 0 6px hsl(var(--secondary) / 0.4))', 
-                'drop-shadow(0 0 0 hsl(var(--secondary) / 0))'
-              ]
-            }}
-            transition={{ duration: 16, repeat: Infinity, delay: 1, times: [0, 0.1, 0.8, 1] }}
-          />
-          <foreignObject x="303" y="403" width="24" height="24">
-            <Play className="w-6 h-6 text-secondary opacity-90" />
-          </foreignObject>
-          
-          <motion.circle 
-            cx="1115" cy="365" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
-            opacity="0.4"
-            animate={{ 
-              stroke: [
-                'hsl(var(--primary))', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary) / 0.8)', 
-                'hsl(var(--primary))'
-              ],
-              filter: [
-                'drop-shadow(0 0 0 hsl(var(--primary) / 0))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
-                'drop-shadow(0 0 8px hsl(var(--primary) / 0.4))', 
-                'drop-shadow(0 0 0 hsl(var(--primary) / 0))'
-              ]
-            }}
-            transition={{ duration: 18, repeat: Infinity, delay: 12, times: [0, 0.1, 0.8, 1] }}
-          />
-          <foreignObject x="1103" y="353" width="24" height="24">
-            <Zap className="w-6 h-6 text-primary opacity-90" />
-          </foreignObject>
-          
-          {/* Animated connection lines that touch circle borders */}
+          {/* Animated connection lines that touch circles and trigger glow */}
           <motion.path
             d="M-100,150 L185,150 L330,415 L585,300 L985,200 L1100,365 L1540,250"
             stroke="hsl(var(--primary))"
@@ -340,15 +298,15 @@ const Hero = () => {
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Clock className="w-5 h-5 text-primary" />
               <span className="text-sm">
-                 {language === 'AR' ? (
+                {language === 'AR' ? (
                   <>
-                    <span className="font-bold">40-200</span> ساعة توفر شهرياً
+                    <span className="text-warning font-bold">40-200</span> ساعة توفر شهرياً
                   </>
-                ) : (
-                  <>
-                    <span className="font-bold">40-200</span> hours saved monthly
-                  </>
-                )}
+                 ) : (
+                   <>
+                     <span className="font-bold">40-200</span> hours saved monthly
+                   </>
+                 )}
               </span>
             </div>
             <div className="flex items-center space-x-2 text-muted-foreground">

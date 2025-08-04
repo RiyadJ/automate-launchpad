@@ -183,9 +183,9 @@ const Comparison = () => {
                 transition={{ delay: index * 0.1 }}
                 className="relative flex items-start"
               >
-                {/* Connector Line */}
+                {/* Connector Line crossing through circle */}
                 {index < comparisons.length - 1 && (
-                  <div className="absolute left-6 top-12 w-0.5 h-16 bg-primary/30 z-0"></div>
+                  <div className="absolute left-6 top-6 w-0.5 h-20 bg-primary/40 z-0"></div>
                 )}
                 
                 {/* Icon with enhanced glow effect */}
