@@ -67,15 +67,14 @@ const Header = () => {
           {/* Logo */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer"
+            className="cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img 
-              src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
+              src={isDark ? "/lovable-uploads/aa41aab2-cdd8-4d6f-8c07-cf97a5a5b930.png" : "/lovable-uploads/59f8f8cd-a970-4082-ba6b-3793802720dc.png"}
               alt="Aotumate logo" 
-              className="w-5 h-5"
+              className="h-8 w-auto"
             />
-            <span className="text-xl font-bold text-foreground font-space-grotesk ml-1">Aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}

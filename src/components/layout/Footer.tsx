@@ -16,14 +16,18 @@ const Footer = () => {
           <div className="space-y-4">
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-2"
+              className="inline-block"
             >
               <img 
-                src="/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png" 
+                src="/lovable-uploads/aa41aab2-cdd8-4d6f-8c07-cf97a5a5b930.png"
                 alt="Aotumate logo" 
-                className="w-5 h-5"
+                className="h-6 w-auto dark:block hidden"
               />
-              <span className="text-xl font-bold text-foreground font-space-grotesk ml-1">Aotumate</span>
+              <img 
+                src="/lovable-uploads/59f8f8cd-a970-4082-ba6b-3793802720dc.png"
+                alt="Aotumate logo" 
+                className="h-6 w-auto dark:hidden block"
+              />
             </motion.div>
             
             <p className="text-muted-foreground leading-relaxed">
