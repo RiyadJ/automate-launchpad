@@ -19,7 +19,7 @@ const Footer = () => {
               className="inline-block"
             >
               <img 
-                src="/lovable-uploads/aa41aab2-cdd8-4d6f-8c07-cf97a5a5b930.png"
+                src="/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png"
                 alt="Aotumate logo" 
                 className="h-6 w-auto dark:block hidden"
               />
