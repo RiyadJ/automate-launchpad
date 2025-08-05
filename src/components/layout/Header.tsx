@@ -71,7 +71,7 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img 
-              src={isDark ? "/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png" : "/lovable-uploads/59f8f8cd-a970-4082-ba6b-3793802720dc.png"}
+              src={isDark ? "/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png" : "/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"}
               alt="Aotumate logo" 
               className="h-8 w-auto"
             />
