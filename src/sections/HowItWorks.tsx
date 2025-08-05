@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Search, Lightbulb, Cog, BarChart3 } from 'lucide-react';
 
 const HowItWorks = () => {
+  const [activeStep, setActiveStep] = useState(0);
   const [language, setLanguage] = useState('EN');
 
   useEffect(() => {
@@ -55,26 +57,29 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-br from-background via-background to-muted/20">
+    <section id="how-it-works" className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-4 bg-primary/10 text-primary border-primary/20">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-6">
             <BarChart3 className="w-4 h-4 mr-2" />
-            {language === 'EN' ? 'Our Process' : 'عمليتنا'}
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            {language === 'EN' ? 'How We\'ll Collaborate,' : 'كيف سنتعاون،'}
-            <br />
-            <span className="text-primary">
-              {language === 'EN' ? 'In 4 Simple Steps' : 'في 4 خطوات بسيطة'}
+            <span className="text-sm font-medium">
+              {language === 'EN' ? 'Our Process' : 'عمليتنا'}
             </span>
+          </div>
+          
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            {language === 'EN' 
+              ? 'Drive Real ROI With Production-Ready Systems'
+              : 'حقق عائد استثمار حقيقي مع أنظمة جاهزة للإنتاج'
+            }
           </h2>
+          
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {language === 'EN' 
               ? 'We identify your biggest opportunities, rapidly validate concepts, and seamlessly integrate scalable AI agents to deliver efficiency and measurable growth for your company.'
@@ -83,93 +88,109 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+        {/* Main Process Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Side - Stage Navigation */}
+          <div className="space-y-4">
+            {steps.map((step, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setActiveStep(index)}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="group"
+                transition={{ delay: index * 0.1 }}
+                className={`w-full text-left p-6 rounded-xl border transition-all duration-300 ${
+                  activeStep === index
+                    ? 'bg-card border-primary shadow-lg'
+                    : 'bg-card/50 border-border hover:border-primary/50'
+                }`}
               >
-                <div className="relative bg-card border border-border/50 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
-                  {/* Step Number */}
-                  <div className="absolute -top-4 left-8">
-                    <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg">
-                      {step.number}
-                    </div>
+                <div className="flex items-center space-x-4">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    activeStep === index
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted text-muted-foreground'
+                  }`}>
+                    {step.number}
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    {/* Content */}
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="p-2 rounded-lg bg-primary/10">
-                          <Icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-bold text-foreground">{step.title}</h3>
-                          <p className="text-sm text-primary font-medium">{step.subtitle}</p>
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {/* Placeholder Image */}
-                    <div className="relative">
-                      <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-muted/50 to-muted border border-border/50 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                        <img 
-                          src={step.image} 
-                          alt={step.title}
-                          className="w-full h-full object-cover rounded-xl opacity-70"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-xl" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="text-sm font-medium text-foreground/80">
-                            {step.title} Phase
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Connection line to next step */}
-                      {index < steps.length - 1 && (
-                        <div className="hidden lg:block absolute -bottom-6 left-1/2 transform -translate-x-1/2">
-                          <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent" />
-                        </div>
-                      )}
-                    </div>
+                  <div>
+                    <h3 className={`text-lg font-semibold ${
+                      activeStep === index ? 'text-foreground' : 'text-muted-foreground'
+                    }`}>
+                      {step.title}
+                    </h3>
+                    <p className={`text-sm ${
+                      activeStep === index ? 'text-primary' : 'text-muted-foreground/70'
+                    }`}>
+                      {step.subtitle}
+                    </p>
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
-            <h3 className="text-2xl font-bold mb-4">
-              {language === 'EN' ? 'Ready to Transform Your Business?' : 'هل أنت مستعد لتحويل عملك؟'}
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              {language === 'EN' 
-                ? 'Let\'s discuss how we can automate your processes and accelerate your growth.'
-                : 'دعنا نناقش كيف يمكننا أتمتة عملياتك وتسريع نموك.'
-              }
-            </p>
+                
+                {activeStep === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pl-12"
+                  >
+                    <p className="text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </motion.div>
+                )}
+              </motion.button>
+            ))}
           </div>
-        </motion.div>
+
+          {/* Right Side - Visual Display */}
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="relative"
+          >
+            {/* Main Visual Area */}
+            <div className="aspect-square bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
+              <img 
+                src={steps[activeStep].image} 
+                alt={steps[activeStep].title}
+                className="w-full h-full object-cover opacity-70"
+              />
+              
+              {/* Overlay with process information */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+              
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border/50">
+                  <div className="flex items-center space-x-3 mb-2">
+                    {React.createElement(steps[activeStep].icon, { className: "w-6 h-6 text-primary" })}
+                    <span className="text-sm font-medium text-primary">
+                      {steps[activeStep].title} Phase
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {steps[activeStep].subtitle}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {steps.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === activeStep ? 'bg-primary scale-125' : 'bg-muted-foreground/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

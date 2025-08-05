@@ -77,7 +77,7 @@ const FAQ = () => {
   const faqs = language === 'AR' ? faqsAR : faqsEN;
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-muted/20 to-background">
+    <section id="faq" className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
