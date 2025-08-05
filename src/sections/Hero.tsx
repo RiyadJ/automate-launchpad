@@ -18,8 +18,8 @@ const Hero = () => {
     setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
   }, []);
 
-  const scrollToCaseStudies = () => {
-    const element = document.getElementById('case-studies');
+  const scrollToHowItWorks = () => {
+    const element = document.getElementById('how-it-works');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -315,10 +315,10 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={scrollToCaseStudies}
+              onClick={scrollToHowItWorks}
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 py-4 text-base sm:text-lg w-full sm:w-auto max-w-sm"
             >
-              {language === 'AR' ? 'شاهد دراسات الحالة' : 'See Case Studies'}
+              {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
             </Button>
           </motion.div>
 
