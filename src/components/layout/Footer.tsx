@@ -24,7 +24,7 @@ const Footer = () => {
                 className="h-6 w-auto dark:block hidden"
               />
               <img 
-                src="/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"
+                src="/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png"
                 alt="Aotumate logo" 
                 className="h-6 w-auto dark:hidden block"
               />
