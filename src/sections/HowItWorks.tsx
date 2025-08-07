@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
@@ -128,19 +128,21 @@ const HowItWorks = () => {
                   </div>
                 </div>
                 
-                {activeStep === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="mt-4 pl-12 overflow-hidden"
-                  >
-                    <p className="text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {activeStep === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="mt-4 pl-12 overflow-hidden"
+                    >
+                      <p className="text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.button>
             ))}
           </div>
