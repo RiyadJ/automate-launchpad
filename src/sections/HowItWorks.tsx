@@ -132,8 +132,9 @@ const HowItWorks = () => {
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-4 pl-12"
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="mt-4 pl-12 overflow-hidden"
                   >
                     <p className="text-muted-foreground leading-relaxed">
                       {step.description}
@@ -150,32 +151,18 @@ const HowItWorks = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="relative"
+            className="relative h-full"
           >
-            {/* Main Visual Area */}
-            <div className="aspect-square bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
+            {/* Main Visual Area - matches height of step buttons */}
+            <div className="h-full bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
               <img 
                 src={steps[activeStep].image} 
                 alt={steps[activeStep].title}
                 className="w-full h-full object-cover opacity-70"
               />
               
-              {/* Overlay with process information */}
+              {/* Overlay for better text visibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-              
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border/50">
-                  <div className="flex items-center space-x-3 mb-2">
-                    {React.createElement(steps[activeStep].icon, { className: "w-6 h-6 text-primary" })}
-                    <span className="text-sm font-medium text-primary">
-                      {steps[activeStep].title} Phase
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {steps[activeStep].subtitle}
-                  </p>
-                </div>
-              </div>
             </div>
 
             {/* Progress Indicator */}

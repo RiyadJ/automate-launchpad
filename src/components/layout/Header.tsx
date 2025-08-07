@@ -86,6 +86,12 @@ const Header = () => {
               {language === 'AR' ? 'خدماتنا' : 'Services'}
             </button>
             <button 
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
+            </button>
+            <button 
               onClick={() => scrollToSection('testimonials')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
@@ -177,6 +183,12 @@ const Header = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors text-left"
               >
                 {language === 'AR' ? 'خدماتنا' : 'Services'}
+              </button>
+              <button 
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}
