@@ -156,11 +156,11 @@ const HowItWorks = () => {
             className="relative flex flex-col h-full"
           >
             {/* Main Visual Area - matches height of step buttons */}
-            <div className="flex-1 bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
+            <div className="flex-1 bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden max-h-[600px]">
               <img 
                 src={steps[activeStep].image} 
                 alt={steps[activeStep].title}
-                className="w-full h-full object-contain p-8"
+                className="max-w-full max-h-full object-contain p-6"
               />
               
               {/* Overlay for better text visibility */}
