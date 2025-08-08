@@ -89,7 +89,7 @@ const HowItWorks = () => {
         </motion.div>
 
         {/* Main Process Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Left Side - Stage Navigation */}
           <div className="space-y-4">
             {steps.map((step, index) => (
