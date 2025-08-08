@@ -89,7 +89,7 @@ const Footer = () => {
                 <img 
                   src="/lovable-uploads/63c1c940-370d-4db6-aa76-fb42228306ea.png" 
                   alt="Threads" 
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   style={{ filter: 'brightness(0) saturate(100%) invert(50%) sepia(100%) saturate(2000%) hue-rotate(240deg) brightness(1) contrast(1)' }}
                 />
               </motion.a>

@@ -13,28 +13,6 @@ const HowItWorks = () => {
     setLanguage(detectedLanguage);
   }, []);
 
-  // Measure left column height to sync right visual height
-  const leftRef = React.useRef<HTMLDivElement>(null);
-  const [rightHeight, setRightHeight] = useState<number | undefined>(undefined);
-
-  useEffect(() => {
-    const update = () => {
-      if (leftRef.current) setRightHeight(leftRef.current.offsetHeight);
-    };
-    update();
-    window.addEventListener('resize', update);
-
-    let ro: ResizeObserver | undefined;
-    if (typeof ResizeObserver !== 'undefined' && leftRef.current) {
-      ro = new ResizeObserver(() => update());
-      ro.observe(leftRef.current);
-    }
-    return () => {
-      window.removeEventListener('resize', update);
-      ro?.disconnect();
-    };
-  }, [activeStep]);
-
   const steps = [
     {
       number: '01',
@@ -113,7 +91,7 @@ const HowItWorks = () => {
         {/* Main Process Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Stage Navigation */}
-          <div className="space-y-4" ref={leftRef}>
+          <div className="space-y-4">
             {steps.map((step, index) => (
               <motion.button
                 key={index}
@@ -175,11 +153,10 @@ const HowItWorks = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="relative flex flex-col"
-            style={{ height: rightHeight }}
+            className="relative h-full"
           >
             {/* Main Visual Area - matches height of step buttons */}
-            <div className="flex-1 bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
+            <div className="h-full bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
               <img 
                 src={steps[activeStep].image} 
                 alt={steps[activeStep].title}
