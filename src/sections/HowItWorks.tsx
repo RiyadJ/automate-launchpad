@@ -22,7 +22,7 @@ const HowItWorks = () => {
         ? 'We conduct a comprehensive audit of your current processes, identifying inefficiencies and automation opportunities that will deliver the highest ROI.'
         : 'نقوم بإجراء تدقيق شامل لعملياتك الحالية، وتحديد أوجه عدم الكفاءة وفرص الأتمتة التي ستحقق أعلى عائد على الاستثمار.',
       icon: Search,
-      image: '/placeholder.svg?height=300&width=400&text=Process+Analysis'
+      image: '/lovable-uploads/fb3dc997-d09f-46f3-8195-12d527fd4e65.png'
     },
     {
       number: '02',
@@ -32,7 +32,7 @@ const HowItWorks = () => {
         ? 'We design custom automation solutions tailored to your specific needs, creating detailed blueprints and proof-of-concept prototypes.'
         : 'نصمم حلول أتمتة مخصصة تناسب احتياجاتك المحددة، وننشئ مخططات مفصلة ونماذج أولية للمفهوم.',
       icon: Lightbulb,
-      image: '/placeholder.svg?height=300&width=400&text=Solution+Design'
+      image: '/lovable-uploads/1d225e92-b999-4ae9-a3a2-2e7d5ad5573e.png'
     },
     {
       number: '03',
@@ -42,7 +42,7 @@ const HowItWorks = () => {
         ? 'Our team builds and deploys production-ready systems with seamless integration into your existing infrastructure and comprehensive testing.'
         : 'يقوم فريقنا ببناء ونشر أنظمة جاهزة للإنتاج مع التكامل السلس في البنية التحتية الحالية والاختبار الشامل.',
       icon: Cog,
-      image: '/placeholder.svg?height=300&width=400&text=System+Integration'
+      image: '/lovable-uploads/87c0e59f-345c-46ff-a151-21e5dfbf85ea.png'
     },
     {
       number: '04',
@@ -52,7 +52,7 @@ const HowItWorks = () => {
         ? 'We continuously monitor performance, provide ongoing support, and identify new opportunities for further automation and optimization.'
         : 'نراقب الأداء بشكل مستمر، ونقدم الدعم المستمر، ونحدد فرص جديدة للمزيد من الأتمتة والتحسين.',
       icon: BarChart3,
-      image: '/placeholder.svg?height=300&width=400&text=Performance+Monitoring'
+      image: '/lovable-uploads/65e45829-3532-41c9-ad36-f06515dcec61.png'
     }
   ];
 
@@ -153,18 +153,18 @@ const HowItWorks = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="relative h-full"
+            className="relative flex flex-col h-full"
           >
             {/* Main Visual Area - matches height of step buttons */}
-            <div className="h-full bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
+            <div className="flex-1 bg-gradient-to-br from-muted/30 to-muted/60 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden">
               <img 
                 src={steps[activeStep].image} 
                 alt={steps[activeStep].title}
-                className="w-full h-full object-cover opacity-70"
+                className="w-full h-full object-contain p-8"
               />
               
               {/* Overlay for better text visibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent" />
             </div>
 
             {/* Progress Indicator */}
