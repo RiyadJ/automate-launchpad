@@ -73,7 +73,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-warning/20 text-warning border border-warning/30 mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-6">
             <Star className="w-4 h-4 mr-2" />
             <span className="text-sm font-medium">
               {language === 'AR' ? 'قصص نجاح العملاء' : 'Client Success Stories'}
