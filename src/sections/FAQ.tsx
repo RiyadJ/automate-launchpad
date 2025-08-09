@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import CalcomBooker from '@/components/ui/calcom-booker';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [language, setLanguage] = useState('EN');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
