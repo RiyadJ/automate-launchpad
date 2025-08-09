@@ -120,7 +120,7 @@ const FAQ = () => {
         </motion.div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}

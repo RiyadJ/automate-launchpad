@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Mail, CalendarDays, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
 import { useState } from 'react';
 import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
@@ -25,12 +25,12 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"
                 alt="Aotumate logo" 
-                className="h-6 w-auto dark:hidden block"
+                className="h-6 w-auto block dark:hidden"
               />
               <img 
                 src="/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png"
                 alt="Aotumate logo" 
-                className="h-6 w-auto dark:block hidden"
+                className="h-6 w-auto hidden dark:block"
               />
             </motion.div>
             
@@ -113,13 +113,20 @@ const Footer = () => {
                 <Mail className="w-4 h-4 text-primary" />
                 <span>Riyad@aotumate.com</span>
               </li>
-              <li className="flex items-center space-x-3 text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+              <li className="text-muted-foreground">
+                <a
+                  href="https://cal.com/riyad-jaamour/30-mins-discovery-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 hover:text-foreground transition-colors"
+                >
+                  <CalendarDays className="w-4 h-4 text-primary" />
+                  <span>Book Free Consultation Call</span>
+                </a>
               </li>
               <li className="flex items-center space-x-3 text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>San Francisco, CA</span>
+                <span>Jeddah, SA</span>
               </li>
             </ul>
           </div>
