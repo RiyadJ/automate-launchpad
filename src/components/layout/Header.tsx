@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import aotumateLogo from '@/assets/aotumate-logo.png';
-import BookingModal from '@/components/ui/booking-modal';
+// No longer importing the old logo
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [language, setLanguage] = useState('EN');
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [showNavCTA, setShowNavCTA] = useState(false);
 
   // Initialize theme based on system preference
   useEffect(() => {
@@ -18,6 +17,18 @@ const Header = () => {
     if (!systemPrefersDark) {
       document.documentElement.classList.add('light');
     }
+
+    // Check for scroll to show/hide nav CTA
+    const handleScroll = () => {
+      const heroCTA = document.getElementById('hero-cta');
+      if (heroCTA) {
+        const rect = heroCTA.getBoundingClientRect();
+        setShowNavCTA(rect.bottom < 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -29,6 +40,9 @@ const Header = () => {
     setLanguage(language === 'EN' ? 'AR' : 'EN');
     document.documentElement.dir = language === 'EN' ? 'rtl' : 'ltr';
     document.documentElement.lang = language === 'EN' ? 'ar' : 'en';
+    
+    // Reload the page to apply language changes to all sections
+    window.location.reload();
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -53,14 +67,14 @@ const Header = () => {
           {/* Logo */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img 
-              src={aotumateLogo} 
-              alt="aotumate logo" 
-              className="w-8 h-8"
+              src={isDark ? "/lovable-uploads/a270aaad-d239-493f-9118-0d53a9fd87fd.png" : "/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"}
+              alt="Aotumate logo" 
+              className="h-8 w-auto"
             />
-            <span className="text-xl font-bold text-foreground">aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -72,10 +86,10 @@ const Header = () => {
               {language === 'AR' ? 'خدماتنا' : 'Services'}
             </button>
             <button 
-              onClick={() => scrollToSection('case-studies')}
+              onClick={() => scrollToSection('how-it-works')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
+              {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
@@ -87,12 +101,31 @@ const Header = () => {
               onClick={() => scrollToSection('faq')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+              {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQs'}
             </button>
           </nav>
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
+            {/* CTA Button - show only after scrolling past hero CTA */}
+            <AnimatePresence>
+              {showNavCTA && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Button 
+                    onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
+                    className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
+                  >
+                    {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Theme Toggle */}
             <Button
               variant="ghost"
@@ -124,14 +157,6 @@ const Header = () => {
               <span className="text-xs">{language}</span>
             </Button>
 
-            {/* CTA Button */}
-            <Button 
-              onClick={() => setIsBookingOpen(true)}
-              className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
-            >
-              {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
-            </Button>
-
             {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
@@ -160,10 +185,10 @@ const Header = () => {
                 {language === 'AR' ? 'خدماتنا' : 'Services'}
               </button>
               <button 
-                onClick={() => scrollToSection('case-studies')}
+                onClick={() => scrollToSection('how-it-works')}
                 className="text-muted-foreground hover:text-foreground transition-colors text-left"
               >
-                {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
+                {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}
@@ -175,11 +200,11 @@ const Header = () => {
                 onClick={() => scrollToSection('faq')}
                 className="text-muted-foreground hover:text-foreground transition-colors text-left"
               >
-                {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+                {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQs'}
               </button>
               <Button 
-                onClick={() => setIsBookingOpen(true)}
-                className="bg-warning text-warning-foreground hover:bg-warning/90 w-full"
+                onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
+                className="bg-warning text-warning-foreground hover:bg-warning/90 mx-4"
               >
                 {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
               </Button>
@@ -188,11 +213,6 @@ const Header = () => {
         )}
       </div>
 
-      {/* Booking Modal */}
-      <BookingModal 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-      />
     </motion.header>
   );
 };

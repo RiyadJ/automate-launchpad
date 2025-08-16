@@ -1,14 +1,32 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
 
-interface BookingModalProps {
+interface CalcomBookerProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
+const CalcomBooker = ({ isOpen, onClose }: CalcomBookerProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      // Load Cal.com embed script
+      const script = document.createElement('script');
+      script.src = 'https://app.cal.com/embed/embed.js';
+      script.async = true;
+      document.head.appendChild(script);
+
+      return () => {
+        // Cleanup script when component unmounts
+        const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
+        if (existingScript) {
+          document.head.removeChild(existingScript);
+        }
+      };
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -47,19 +65,13 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               </Button>
             </div>
             
-            {/* Cal.com Embed Placeholder */}
-            <div className="p-8 text-center">
-              <div className="w-full h-96 bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground mb-2">Cal.com Integration</div>
-                  <p className="text-muted-foreground mb-4">
-                    This is a placeholder for the Cal.com booking widget.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    To implement: Install @calcom/atoms and replace this with BookerEmbed component
-                  </p>
-                </div>
-              </div>
+            {/* Cal.com Embed */}
+            <div className="p-4 min-h-[500px]">
+              <div 
+                data-cal-link="aotumate/30min"
+                data-cal-config='{"layout":"month_view"}'
+                className="w-full h-full min-h-[500px] rounded-lg"
+              ></div>
             </div>
           </motion.div>
         </motion.div>
@@ -68,4 +80,4 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   );
 };
 
-export default BookingModal;
+export default CalcomBooker;
