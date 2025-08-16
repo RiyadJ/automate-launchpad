@@ -481,12 +481,18 @@ const Hero = () => {
                   "StreamlineHQ",
                   "InnovateCorp",
                 ].map((company, index) => (
-                  <span
+                  <motion.span
                     key={`${company}-${index}`}
-                    className="text-muted-foreground font-medium text-lg px-6 mr-12 animate-[text-shine_4s_ease-in-out_infinite]"
+                    className="text-muted-foreground font-medium px-6"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: index * 0.5,
+                    }}
                   >
                     {company}
-                  </span>
+                  </motion.span>
                 ))}
               </Marquee>
             </div>
