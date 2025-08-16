@@ -18,11 +18,6 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				'satoshi': ['Satoshi', 'Space Grotesk', 'Inter', 'sans-serif'],
-				'space-grotesk': ['Space Grotesk', 'Inter', 'sans-serif'],
-				'inter': ['Inter', 'sans-serif'],
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

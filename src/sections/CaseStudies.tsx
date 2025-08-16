@@ -1,107 +1,54 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Clock, DollarSign, TrendingUp, Users, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { TrendingUp, Clock, DollarSign, Users, ArrowRight } from 'lucide-react';
 
 const CaseStudies = () => {
-  const [currentCase, setCurrentCase] = useState(0);
-  const [language, setLanguage] = useState('EN');
-
-  useEffect(() => {
-    setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
-  }, []);
-
   const caseStudies = [
     {
-      company: language === 'AR' ? "شركة تقنية متنامية" : "Growing Tech Company",
-      industry: language === 'AR' ? "برمجيات السحابة" : "Cloud Software",
-      problem: language === 'AR' 
-        ? "فريق مبيعات يقضي 15 ساعة أسبوعياً في إدخال بيانات العملاء المحتملين يدوياً من مصادر مختلفة"
-        : "Sales team spending 15 hours weekly manually entering lead data from various sources",
-      solution: language === 'AR'
-        ? "أتمتة التقاط العملاء المحتملين ومزامنة CRM وتسلسل رعاية البريد الإلكتروني"
-        : "Automated lead capture, CRM sync, and email nurturing sequences",
-      results: [
-        {
-          metric: language === 'AR' ? "60 ساعة" : "60 hours",
-          description: language === 'AR' ? "توفر شهرياً" : "saved monthly",
-          icon: Clock
-        },
-        {
-          metric: language === 'AR' ? "300%" : "300%",
-          description: language === 'AR' ? "زيادة في تحويل العملاء المحتملين" : "increase in lead conversion",
-          icon: TrendingUp
-        }
-      ],
-      testimonial: language === 'AR'
-        ? "لقد حولت الأتمتة قسم المبيعات لدينا بالكامل. الآن يمكننا التركيز على بناء العلاقات بدلاً من إدخال البيانات."
-        : "Automation completely transformed our sales department. We can now focus on building relationships instead of data entry.",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png"
+      company: "TechFlow Solutions",
+      industry: "Software Development",
+      problem: "Manual client onboarding taking 40+ hours per client",
+      solution: "Automated onboarding workflow with document collection, account setup, and welcome sequences",
+      results: {
+        timeSaved: "35 hours per client",
+        costSavings: "$75,000 annually",
+        errorReduction: "92%",
+        scalability: "10x more clients with same team"
+      },
+      testimonial: "We went from spending entire weeks on onboarding to having it done automatically overnight. Our team can now focus on actual development work instead of paperwork.",
+      avatar: "👨‍💻"
     },
     {
-      company: language === 'AR' ? "وكالة التسويق الرقمي" : "Digital Marketing Agency",
-      industry: language === 'AR' ? "التسويق والإعلان" : "Marketing & Advertising",
-      problem: language === 'AR'
-        ? "إنتاج تقارير العملاء يدوياً استغرق 8 ساعات لكل عميل شهرياً"
-        : "Manual client reporting took 8 hours per client monthly",
-      solution: language === 'AR'
-        ? "لوحات معلومات آلية وإنتاج تقارير مخصصة"
-        : "Automated dashboards and custom report generation",
-      results: [
-        {
-          metric: language === 'AR' ? "240 ساعة" : "240 hours",
-          description: language === 'AR' ? "توفر شهرياً" : "saved monthly",
-          icon: Clock
-        },
-        {
-          metric: language === 'AR' ? "$50K" : "$50K",
-          description: language === 'AR' ? "إيرادات إضافية" : "additional revenue",
-          icon: DollarSign
-        }
-      ],
-      testimonial: language === 'AR'
-        ? "أصبحت التقارير التي كانت تستغرق ساعات الآن تحدث بنقرة واحدة. عملاؤنا يحبون لوحات المعلومات الفورية."
-        : "Reports that took hours now happen with one click. Our clients love the real-time dashboards.",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png"
+      company: "GrowthMart E-commerce",
+      industry: "E-commerce",
+      problem: "Order processing, inventory updates, and customer service consuming 60+ hours weekly",
+      solution: "Complete order-to-fulfillment automation with inventory sync, automated customer communications, and support chatbot",
+      results: {
+        timeSaved: "60 hours per week",
+        costSavings: "$120,000 annually",
+        errorReduction: "98%",
+        scalability: "5x order volume increase"
+      },
+      testimonial: "Our conversion rate doubled when customers started getting instant responses. The automation handles everything from order confirmation to shipping updates flawlessly.",
+      avatar: "🛍️"
     },
     {
-      company: language === 'AR' ? "متجر التجارة الإلكترونية" : "E-commerce Store",
-      industry: language === 'AR' ? "التجارة الإلكترونية" : "E-commerce",
-      problem: language === 'AR'
-        ? "معالجة الطلبات وإدارة المخزون وخدمة العملاء كلها تُدار يدوياً"
-        : "Order processing, inventory management, and customer service all handled manually",
-      solution: language === 'AR'
-        ? "أتمتة الطلبات وتتبع المخزون وروبوتات دعم العملاء"
-        : "Order automation, inventory tracking, and customer support bots",
-      results: [
-        {
-          metric: language === 'AR' ? "150 ساعة" : "150 hours",
-          description: language === 'AR' ? "توفر شهرياً" : "saved monthly",
-          icon: Clock
-        },
-        {
-          metric: language === 'AR' ? "500%" : "500%",
-          description: language === 'AR' ? "نمو في الطلبات" : "growth in orders processed",
-          icon: TrendingUp
-        }
-      ],
-      testimonial: language === 'AR'
-        ? "تعالج أنظمتنا الآن آلاف الطلبات دون تدخل بشري. لقد تحولنا من متجر صغير إلى عملية قابلة للتوسع."
-        : "Our systems now process thousands of orders without human intervention. We've gone from a small shop to a scalable operation.",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png"
+      company: "DataSync Consulting",
+      industry: "Business Consulting",
+      problem: "Creating client reports and proposals manually for 20+ hours per week",
+      solution: "Automated report generation system pulling data from multiple sources with branded templates and client-specific insights",
+      results: {
+        timeSaved: "20 hours per week",
+        costSavings: "$85,000 annually",
+        errorReduction: "95%",
+        scalability: "3x more clients served"
+      },
+      testimonial: "Our clients are amazed by the speed and quality of our reports now. What used to take days now happens in minutes, and the insights are more accurate than ever.",
+      avatar: "📊"
     }
   ];
 
-  // Auto-loop through case studies
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCase((prev) => (prev + 1) % caseStudies.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [caseStudies.length]);
-
   return (
-    <section id="case-studies" className="py-20 bg-gradient-to-b from-background to-muted/20">
+    <section id="case-studies" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -182,15 +129,37 @@ const CaseStudies = () => {
                   </h4>
 
                   <div className="grid grid-cols-2 gap-4">
-                    {study.results.map((result, idx) => (
-                      <div key={idx} className="p-4 rounded-lg bg-success/10 border border-success/20">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <result.icon className="w-5 h-5 text-success" />
-                          <span className="text-sm text-muted-foreground">{result.description}</span>
-                        </div>
-                        <div className="text-2xl font-bold text-success">{result.metric}</div>
+                    <div className="p-4 rounded-lg bg-success/10 border border-success/20">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Clock className="w-5 h-5 text-success" />
+                        <span className="text-sm text-muted-foreground">Time Saved</span>
                       </div>
-                    ))}
+                      <div className="text-2xl font-bold text-success">{study.results.timeSaved}</div>
+                    </div>
+
+                    <div className="p-4 rounded-lg bg-secondary/10 border border-secondary/20">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <DollarSign className="w-5 h-5 text-secondary" />
+                        <span className="text-sm text-muted-foreground">Cost Savings</span>
+                      </div>
+                      <div className="text-2xl font-bold text-secondary">{study.results.costSavings}</div>
+                    </div>
+
+                    <div className="p-4 rounded-lg bg-primary/10 border border-primary/20">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <TrendingUp className="w-5 h-5 text-primary" />
+                        <span className="text-sm text-muted-foreground">Error Reduction</span>
+                      </div>
+                      <div className="text-2xl font-bold text-primary">{study.results.errorReduction}</div>
+                    </div>
+
+                    <div className="p-4 rounded-lg bg-warning/10 border border-warning/20">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Users className="w-5 h-5 text-warning" />
+                        <span className="text-sm text-muted-foreground">Scalability</span>
+                      </div>
+                      <div className="text-xl font-bold text-warning">{study.results.scalability}</div>
+                    </div>
                   </div>
 
                   <div className="pt-6">
@@ -216,6 +185,27 @@ const CaseStudies = () => {
           ))}
         </div>
 
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-16 p-8 rounded-xl bg-gradient-to-r from-success/10 to-primary/10 border border-success/20"
+        >
+          <h3 className="text-2xl font-bold text-foreground mb-4">
+            Your Success Story Could Be Next
+          </h3>
+          <p className="text-lg text-muted-foreground mb-6">
+            Every business is unique, but the results are always the same: more time, less errors, higher profits.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
+          >
+            Start Your Success Story
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

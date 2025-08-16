@@ -1,89 +1,61 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Bot, Workflow, BarChart3, MessageSquare, Database, Zap } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import React from 'react';
+import automationIcons from '@/assets/automation-icons.png';
 
 const Services = () => {
-  const [currentService, setCurrentService] = useState(0);
-  const [language, setLanguage] = useState('EN');
-
-  useEffect(() => {
-    setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
-  }, []);
-
   const services = [
     {
       icon: Workflow,
-      title: language === 'AR' ? "أتمتة العمليات التجارية" : "Business Process Automation",
-      description: language === 'AR' 
-        ? "نحن نقضي على المهام المتكررة التي تستنزف وقت فريقك. إدخال البيانات، إنتاج التقارير، تسلسل البريد الإلكتروني، معالجة الطلبات - كلها تتم تلقائياً."
-        : "We eliminate the repetitive tasks that eat your team's time. Data entry, report generation, email sequences, order processing - all handled automatically.",
-      features: language === 'AR' 
-        ? ["أتمتة سير العمل", "معالجة البيانات", "أتمتة البريد الإلكتروني", "إنتاج الوثائق"]
-        : ["Workflow automation", "Data processing", "Email automation", "Document generation"],
+      title: "Business Process Automation",
+      description: "We eliminate the repetitive tasks that eat your team's time. Data entry, report generation, email sequences, order processing - all handled automatically.",
+      features: ["Workflow automation", "Data processing", "Email automation", "Document generation"],
+      savingsTime: "40-80 hours/month",
+      errorReduction: "95%"
     },
     {
       icon: Bot,
-      title: language === 'AR' ? "خدمة العملاء المدعومة بالذكاء الاصطناعي" : "AI-Powered Customer Service",
-      description: language === 'AR'
-        ? "روبوتات محادثة ذكية ومساعدين AI يتعاملون مع استفسارات العملاء على مدار الساعة، ويؤهلون العملاء المحتملين، ويحولون القضايا المعقدة إلى فريقك."
-        : "Smart chatbots and AI assistants that handle customer inquiries 24/7, qualify leads, and escalate complex issues to your team.",
-      features: language === 'AR'
-        ? ["دعم العملاء 24/7", "تأهيل العملاء المحتملين", "حجز المواعيد", "أتمتة الأسئلة الشائعة"]
-        : ["24/7 customer support", "Lead qualification", "Appointment booking", "FAQ automation"],
+      title: "AI-Powered Customer Service",
+      description: "Smart chatbots and AI assistants that handle customer inquiries 24/7, qualify leads, and escalate complex issues to your team.",
+      features: ["24/7 customer support", "Lead qualification", "Appointment booking", "FAQ automation"],
+      savingsTime: "60-120 hours/month",
+      errorReduction: "90%"
     },
     {
       icon: Database,
-      title: language === 'AR' ? "تكامل ومزامنة البيانات" : "Data Integration & Sync",
-      description: language === 'AR'
-        ? "اربط جميع أدواتك ومنصاتك. لا مزيد من إدخال البيانات اليدوي بين الأنظمة. كل شيء يبقى متزامناً تلقائياً."
-        : "Connect all your tools and platforms. No more manual data entry between systems. Everything stays synchronized automatically.",
-      features: language === 'AR'
-        ? ["تكامل CRM", "مزامنة متعددة المنصات", "تحديثات فورية", "التحقق من صحة البيانات"]
-        : ["CRM integration", "Multi-platform sync", "Real-time updates", "Data validation"],
+      title: "Data Integration & Sync",
+      description: "Connect all your tools and platforms. No more manual data entry between systems. Everything stays synchronized automatically.",
+      features: ["CRM integration", "Multi-platform sync", "Real-time updates", "Data validation"],
+      savingsTime: "20-50 hours/month",
+      errorReduction: "99%"
     },
     {
       icon: BarChart3,
-      title: language === 'AR' ? "أتمتة التحليلات والتقارير" : "Analytics & Reporting Automation",
-      description: language === 'AR'
-        ? "احصل على لوحات معلومات فورية وتقارير آلية. اتخذ قرارات مبنية على البيانات دون قضاء ساعات في إنشاء جداول البيانات."
-        : "Get real-time dashboards and automated reports. Make data-driven decisions without spending hours creating spreadsheets.",
-      features: language === 'AR'
-        ? ["لوحات معلومات آلية", "تقارير مخصصة", "تتبع KPI", "تنبيهات الأداء"]
-        : ["Automated dashboards", "Custom reports", "KPI tracking", "Performance alerts"],
+      title: "Analytics & Reporting Automation",
+      description: "Get real-time dashboards and automated reports. Make data-driven decisions without spending hours creating spreadsheets.",
+      features: ["Automated dashboards", "Custom reports", "KPI tracking", "Performance alerts"],
+      savingsTime: "15-30 hours/month",
+      errorReduction: "85%"
     },
     {
       icon: MessageSquare,
-      title: language === 'AR' ? "توليد ورعاية العملاء المحتملين" : "Lead Generation & Nurturing",
-      description: language === 'AR'
-        ? "التقاط آلي للعملاء المحتملين، والتأهيل، وتسلسل الرعاية الذي يحول المحتملين إلى عملاء أثناء نومك."
-        : "Automated lead capture, qualification, and nurturing sequences that turn prospects into customers while you sleep.",
-      features: language === 'AR'
-        ? ["نماذج التقاط العملاء المحتملين", "تسلسل البريد الإلكتروني", "تسجيل نقاط العملاء المحتملين", "أتمتة CRM"]
-        : ["Lead capture forms", "Email sequences", "Lead scoring", "CRM automation"],
+      title: "Lead Generation & Nurturing",
+      description: "Automated lead capture, qualification, and nurturing sequences that turn prospects into customers while you sleep.",
+      features: ["Lead capture forms", "Email sequences", "Lead scoring", "CRM automation"],
+      savingsTime: "25-60 hours/month",
+      errorReduction: "80%"
     },
     {
       icon: Zap,
-      title: language === 'AR' ? "حلول الأتمتة المخصصة" : "Custom Automation Solutions",
-      description: language === 'AR'
-        ? "التحديات التجارية الفريدة تتطلب حلولاً فريدة. نحن نبني أتمتة مخصصة مصممة خصيصاً لاحتياجاتك المحددة."
-        : "Unique business challenges require unique solutions. We build custom automations tailored to your specific needs.",
-      features: language === 'AR'
-        ? ["سير عمل مخصص", "تكامل API", "لوحات معلومات مخصصة", "حلول قابلة للتوسع"]
-        : ["Bespoke workflows", "API integrations", "Custom dashboards", "Scalable solutions"],
+      title: "Custom Automation Solutions",
+      description: "Unique business challenges require unique solutions. We build custom automations tailored to your specific needs.",
+      features: ["Bespoke workflows", "API integrations", "Custom dashboards", "Scalable solutions"],
+      savingsTime: "50-200 hours/month",
+      errorReduction: "95%"
     }
   ];
 
-  // Auto-loop through services
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentService((prev) => (prev + 1) % services.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [services.length]);
-
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-muted/20 to-background">
+    <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -94,82 +66,111 @@ const Services = () => {
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-6">
             <Zap className="w-4 h-4 mr-2" />
-            <span className="text-sm font-medium">
-              {language === 'AR' ? 'ما نقوم بأتمته' : 'What We Automate'}
-            </span>
+            <span className="text-sm font-medium">What We Automate</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            {language === 'AR' 
-              ? 'نحن نؤتمت كل ما يضيع وقتك'
-              : 'We Automate Everything That Wastes Your Time'
-            }
+            We Automate Everything{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              That Wastes Your Time
+            </span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {language === 'AR'
-              ? 'من إدخال البيانات البسيط إلى سير العمل المعقد متعدد الخطوات - إذا كان متكرراً، يمكننا أتمته.'
-              : 'From simple data entry to complex multi-step workflows - if it\'s repetitive, we can automate it.'
-            }
+            From simple data entry to complex multi-step workflows - if it's repetitive, we can automate it. Here's how we transform each area of your business:
           </p>
         </motion.div>
 
-        {/* Service Display Area */}
-        <div className="max-w-4xl mx-auto">
-          {/* Service Navigation Dots */}
-          <div className="flex justify-center space-x-2 mb-8">
-            {services.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentService(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentService 
-                    ? 'bg-primary scale-125' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Current Service Card */}
-          <AnimatePresence mode="wait">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
             <motion.div
-              key={currentService}
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ duration: 0.5 }}
-              className="relative p-8 rounded-xl bg-card border border-border shadow-lg"
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.02, y: -10 }}
+              className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Icon */}
-              <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-primary/20 mx-auto mb-6">
-                {React.createElement(services[currentService].icon, { className: "w-8 h-8 text-primary" })}
-              </div>
+              {/* Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="relative">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors mb-4">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
 
-              {/* Content */}
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  {services[currentService].title}
+                {/* Content */}
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {service.title}
                 </h3>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
-                  {services[currentService].description}
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {service.description}
                 </p>
 
                 {/* Features */}
-                <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-                  {services[currentService].features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 rounded-full bg-secondary" />
-                      <span className="text-muted-foreground text-sm">{feature}</span>
-                    </div>
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center space-x-2 text-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
                   ))}
+                </ul>
+
+                {/* Stats */}
+                <div className="flex justify-between pt-4 border-t border-border/50">
+                  <div>
+                    <div className="text-sm font-semibold text-success">{service.savingsTime}</div>
+                    <div className="text-xs text-muted-foreground">Time Saved</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm font-semibold text-secondary">{service.errorReduction}</div>
+                    <div className="text-xs text-muted-foreground">Error Reduction</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-
+          ))}
         </div>
+
+        {/* Bottom Image & CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="relative inline-block mb-8">
+            <img 
+              src={automationIcons} 
+              alt="Automation Technology Stack" 
+              className="w-32 h-32 mx-auto opacity-80"
+            />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 border-2 border-primary/30 rounded-full"
+            />
+          </div>
+          
+          <h3 className="text-2xl font-bold text-foreground mb-4">
+            Don't See Your Use Case?
+          </h3>
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+            We've automated everything from complex manufacturing workflows to simple email responses. If it's repetitive, we can automate it.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-warning text-warning-foreground rounded-lg font-semibold hover:bg-warning/90 transition-colors"
+          >
+            Get Your Custom Automation Plan
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
