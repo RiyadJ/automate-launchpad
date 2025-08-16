@@ -1,27 +1,40 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Clock, TrendingUp, Bot, GitBranch, Workflow, Play, Webhook, Activity } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  Zap,
+  Clock,
+  TrendingUp,
+  Bot,
+  GitBranch,
+  Workflow,
+  Play,
+  Webhook,
+  Activity,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Marquee } from "@devnomic/marquee";
 
 const Hero = () => {
-  const [currentLetter, setCurrentLetter] = useState('o');
-  const [language, setLanguage] = useState('EN');
-  
+  const [currentLetter, setCurrentLetter] = useState("o");
+  const [language, setLanguage] = useState("EN");
+
   useEffect(() => {
+    console.log("Hero component mounted.");
     const interval = setInterval(() => {
-      setCurrentLetter(prev => prev === 'o' ? 'u' : 'o');
+      setCurrentLetter((prev) => (prev === "o" ? "u" : "o"));
     }, 4000); // Increased from 2000ms to 4000ms for longer interval
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
+    setLanguage(document.documentElement.lang === "ar" ? "AR" : "EN");
   }, []);
 
   const scrollToHowItWorks = () => {
-    const element = document.getElementById('how-it-works');
+    const element = document.getElementById("how-it-works");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -29,113 +42,214 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 900"
+          preserveAspectRatio="xMidYMid slice"
+        >
           <defs>
-            <pattern id="automation-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <circle cx="50" cy="50" r="2" fill="hsl(var(--primary))" opacity="0.3" />
+            <pattern
+              id="automation-grid"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="2"
+                fill="hsl(var(--primary))"
+                opacity="0.3"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#automation-grid)" />
-          
+
           {/* Automation icons with glowing circles */}
-          <motion.circle 
-            cx="200" cy="150" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
+          <motion.circle
+            cx="200"
+            cy="150"
+            r="15"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--primary) / 0)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
+                "0 0 0 hsl(var(--primary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 0 }}
           />
           <foreignObject x="188" y="138" width="24" height="24">
             <Bot className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="600" cy="300" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="600"
+            cy="300"
+            r="15"
+            stroke="hsl(var(--secondary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--secondary) / 0)",
+                "0 0 20px hsl(var(--secondary) / 0.3)",
+                "0 0 0 hsl(var(--secondary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
           />
           <foreignObject x="588" y="288" width="24" height="24">
             <GitBranch className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="1000" cy="200" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="1000"
+            cy="200"
+            r="15"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--primary) / 0)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
+                "0 0 0 hsl(var(--primary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
           />
           <foreignObject x="988" y="188" width="24" height="24">
             <Workflow className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="400" cy="600" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="400"
+            cy="600"
+            r="15"
+            stroke="hsl(var(--secondary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--secondary) / 0)",
+                "0 0 20px hsl(var(--secondary) / 0.3)",
+                "0 0 0 hsl(var(--secondary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
           />
           <foreignObject x="388" y="588" width="24" height="24">
             <Webhook className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="800" cy="500" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="800"
+            cy="500"
+            r="15"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--primary) / 0)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
+                "0 0 0 hsl(var(--primary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 2 }}
           />
           <foreignObject x="788" y="488" width="24" height="24">
             <Activity className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="315" cy="415" r="15" 
-            stroke="hsl(var(--secondary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="315"
+            cy="415"
+            r="15"
+            stroke="hsl(var(--secondary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--secondary) / 0)', '0 0 20px hsl(var(--secondary) / 0.3)', '0 0 0 hsl(var(--secondary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--secondary) / 0))', 'drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--secondary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--secondary) / 0)",
+                "0 0 20px hsl(var(--secondary) / 0.3)",
+                "0 0 0 hsl(var(--secondary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 2.5 }}
           />
           <foreignObject x="303" y="403" width="24" height="24">
             <Play className="w-6 h-6 text-secondary opacity-90" />
           </foreignObject>
-          
-          <motion.circle 
-            cx="1115" cy="365" r="15" 
-            stroke="hsl(var(--primary))" strokeWidth="1" fill="none" 
+
+          <motion.circle
+            cx="1115"
+            cy="365"
+            r="15"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            fill="none"
             opacity="0.4"
-            animate={{ 
-              boxShadow: ['0 0 0 hsl(var(--primary) / 0)', '0 0 20px hsl(var(--primary) / 0.3)', '0 0 0 hsl(var(--primary) / 0)'],
-              filter: ['drop-shadow(0 0 0 hsl(var(--primary) / 0))', 'drop-shadow(0 0 8px hsl(var(--primary) / 0.6))', 'drop-shadow(0 0 0 hsl(var(--primary) / 0))']
+            animate={{
+              boxShadow: [
+                "0 0 0 hsl(var(--primary) / 0)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
+                "0 0 0 hsl(var(--primary) / 0)",
+              ],
+              filter: [
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
+                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
+              ],
             }}
             transition={{ duration: 3, repeat: Infinity, delay: 3 }}
           />
           <foreignObject x="1103" y="353" width="24" height="24">
             <Zap className="w-6 h-6 text-primary opacity-90" />
           </foreignObject>
-          
+
           {/* Animated connection lines with more turns and fade-out effect */}
           <motion.path
             d="M-100,150 L200,150 L315,415 L600,300 L1000,200 L1115,365 L1540,250"
@@ -143,15 +257,15 @@ const Hero = () => {
             strokeWidth="2"
             fill="none"
             initial={{ pathLength: 0, opacity: 0.5 }}
-            animate={{ 
+            animate={{
               pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.5, 0.5, 0]
+              opacity: [0, 0.5, 0.5, 0],
             }}
-            transition={{ 
-              duration: 16, 
-              repeat: Infinity, 
+            transition={{
+              duration: 16,
+              repeat: Infinity,
               ease: "linear",
-              times: [0, 0.7, 0.9, 1]
+              times: [0, 0.7, 0.9, 1],
             }}
           />
           <motion.path
@@ -160,16 +274,16 @@ const Hero = () => {
             strokeWidth="2"
             fill="none"
             initial={{ pathLength: 0, opacity: 0.4 }}
-            animate={{ 
+            animate={{
               pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.4, 0.4, 0]
+              opacity: [0, 0.4, 0.4, 0],
             }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity, 
-              ease: "linear", 
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
               delay: 4,
-              times: [0, 0.7, 0.9, 1]
+              times: [0, 0.7, 0.9, 1],
             }}
           />
           <motion.path
@@ -178,27 +292,26 @@ const Hero = () => {
             strokeWidth="1.5"
             fill="none"
             initial={{ pathLength: 0, opacity: 0.3 }}
-            animate={{ 
+            animate={{
               pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.3, 0.3, 0]
+              opacity: [0, 0.3, 0.3, 0],
             }}
-            transition={{ 
-              duration: 18, 
-              repeat: Infinity, 
-              ease: "linear", 
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "linear",
               delay: 8,
-              times: [0, 0.7, 0.9, 1]
+              times: [0, 0.7, 0.9, 1],
             }}
           />
         </svg>
       </div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -206,17 +319,20 @@ const Hero = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight font-space-grotesk"
           >
-            {language === 'AR' ? (
+            {language === "AR" ? (
               <>
-                لا عمل يدوي.<br />
-                استرد وقتك.<br />
+                لا عمل يدوي.
+                <br />
+                استرد وقتك.
+                <br />
                 أتمت عملك.
               </>
             ) : (
               <>
-                No Manual Work.<br />
-                Reclaim Your Time.<br />
-                A
+                No Manual Work.
+                <br />
+                Reclaim Your Time.
+                <br />A
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentLetter}
@@ -232,14 +348,14 @@ const Hero = () => {
                 t
                 <AnimatePresence mode="wait">
                   <motion.span
-                    key={`second-${currentLetter === 'o' ? 'u' : 'o'}`}
+                    key={`second-${currentLetter === "o" ? "u" : "o"}`}
                     initial={{ y: -20, opacity: 0, rotateX: -90 }}
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
                     exit={{ y: 20, opacity: 0, rotateX: 90 }}
                     transition={{ duration: 0.5 }}
                     className="inline-block"
                   >
-                    {currentLetter === 'o' ? 'u' : 'o'}
+                    {currentLetter === "o" ? "u" : "o"}
                   </motion.span>
                 </AnimatePresence>
                 mate Your Business.
@@ -254,10 +370,9 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-space-grotesk"
           >
-            {language === 'AR' 
-              ? 'نحن نصمم أنظمة الأتمتة المخصصة التي تقطع المهام المتكررة، وتقلل الأخطاء، وتحرر فريقك للتركيز على ما ينمي عملك فعلاً.'
-              : 'We design custom automation systems that cut repetitive tasks, reduce errors, and free your team to focus on what actually grows your business.'
-            }
+            {language === "AR"
+              ? "نحن نصمم أنظمة الأتمتة المخصصة التي تقطع المهام المتكررة، وتقلل الأخطاء، وتحرر فريقك للتركيز على ما ينمي عملك فعلاً."
+              : "We design custom automation systems that cut repetitive tasks, reduce errors, and free your team to focus on what actually grows your business."}
           </motion.p>
 
           {/* Stats */}
@@ -269,28 +384,33 @@ const Hero = () => {
           >
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm">
-                  {language === 'AR' ? (
-                    <>
-                      <span className="font-bold">40-200</span> ساعة توفر شهرياً
-                    </>
-                  ) : (
-                    <>
-                      <span className="font-bold">40-200</span> hours saved monthly
-                    </>
-                  )}
-                </span>
+              <span className="text-sm">
+                {language === "AR" ? (
+                  <>
+                    <span className="font-bold">40-200</span> ساعة توفر شهرياً
+                  </>
+                ) : (
+                  <>
+                    <span className="font-bold">40-200</span> hours saved
+                    monthly
+                  </>
+                )}
+              </span>
             </div>
             <div className="flex items-center space-x-2 text-muted-foreground">
               <TrendingUp className="w-5 h-5 text-secondary" />
               <span className="text-sm">
-                {language === 'AR' ? '95% تحسن في الكفاءة' : '95% efficiency boost'}
+                {language === "AR"
+                  ? "95% تحسن في الكفاءة"
+                  : "95% efficiency boost"}
               </span>
             </div>
             <div className="flex items-center space-x-2 text-muted-foreground">
               <Zap className="w-5 h-5 text-success" />
               <span className="text-sm">
-                {language === 'AR' ? 'عائد استثمار خلال 30 يوم' : 'ROI visible in 30 days'}
+                {language === "AR"
+                  ? "عائد استثمار خلال 30 يوم"
+                  : "ROI visible in 30 days"}
               </span>
             </div>
           </motion.div>
@@ -303,22 +423,29 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
             id="hero-cta"
           >
-            <Button 
-              size="lg" 
-              onClick={() => window.open('https://cal.com/riyad-jaamour/30-mins-discovery-call', '_blank')}
+            <Button
+              size="lg"
+              onClick={() =>
+                window.open(
+                  "https://cal.com/riyad-jaamour/30-mins-discovery-call",
+                  "_blank"
+                )
+              }
               className="bg-warning text-warning-foreground hover:bg-warning/90 px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold animate-pulse-glow group w-full sm:w-auto max-w-sm"
             >
-              {language === 'AR' ? 'احصل على تدقيق مجاني للأتمتة' : 'Get Your Free Automation Audit'}
+              {language === "AR"
+                ? "احصل على تدقيق مجاني للأتمتة"
+                : "Get Your Free Automation Audit"}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            
-            <Button 
-              variant="outline" 
+
+            <Button
+              variant="outline"
               size="lg"
               onClick={scrollToHowItWorks}
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 py-4 text-base sm:text-lg w-full sm:w-auto max-w-sm"
             >
-              {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
+              {language === "AR" ? "كيف نعمل" : "How It Works"}
             </Button>
           </motion.div>
 
@@ -329,10 +456,9 @@ const Hero = () => {
             transition={{ delay: 0.6 }}
             className="text-sm text-muted-foreground mt-8"
           >
-            {language === 'AR' 
-              ? '✓ لا عقود طويلة الأمد • ✓ ضمان استرداد 30 يوم • ✓ إعداد خلال أسبوعين'
-              : '✓ No long-term contracts • ✓ 30-day money-back guarantee • ✓ Setup in 2 weeks'
-            }
+            {language === "AR"
+              ? "✓ لا عقود طويلة الأمد • ✓ ضمان استرداد 30 يوم • ✓ إعداد خلال أسبوعين"
+              : "✓ No long-term contracts • ✓ 30-day money-back guarantee • ✓ Setup in 2 weeks"}
           </motion.p>
 
           {/* Trusted By Section */}
@@ -343,25 +469,26 @@ const Hero = () => {
             className="mt-16"
           >
             <p className="text-sm text-muted-foreground mb-6">
-              {language === 'AR' ? 'موثوق من قبل' : 'Trusted by'}
+              {language === "AR" ? "موثوق من قبل" : "Trusted by"}
             </p>
             <div className="overflow-hidden relative max-w-4xl mx-auto">
-              <motion.div
-                animate={{ x: ['0%', '-100%'] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="flex space-x-12 whitespace-nowrap"
-              >
-                {[...Array(2)].map((_, setIndex) => 
-                  ['TechFlow Inc', 'DataSync Corp', 'AutoFlow Solutions', 'GrowthLab', 'StreamlineHQ', 'InnovateCorp'].map((company, index) => (
-                    <span
-                      key={`${company}-${setIndex}-${index}`}
-                      className="text-muted-foreground font-medium text-lg px-6 animate-[text-shine_4s_ease-in-out_infinite]"
-                    >
-                      {company}
-                    </span>
-                  ))
-                )}
-              </motion.div>
+              <Marquee>
+                {[
+                  "TechFlow Inc",
+                  "DataSync Corp",
+                  "AutoFlow Solutions",
+                  "GrowthLab",
+                  "StreamlineHQ",
+                  "InnovateCorp",
+                ].map((company, index) => (
+                  <span
+                    key={`${company}-${index}`}
+                    className="text-muted-foreground font-medium text-lg px-6 mr-12 animate-[text-shine_4s_ease-in-out_infinite]"
+                  >
+                    {company}
+                  </span>
+                ))}
+              </Marquee>
             </div>
           </motion.div>
         </div>
@@ -378,7 +505,6 @@ const Hero = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-40 right-20 w-20 h-20 bg-secondary/20 rounded-full blur-xl"
       />
-      
     </section>
   );
 };
