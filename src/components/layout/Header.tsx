@@ -1,12 +1,24 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
+import aotumateLogo from '@/assets/aotumate-logo.png';
+import BookingModal from '@/components/ui/booking-modal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [language, setLanguage] = useState('EN');
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  // Initialize theme based on system preference
+  useEffect(() => {
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDark(systemPrefersDark);
+    if (!systemPrefersDark) {
+      document.documentElement.classList.add('light');
+    }
+  }, []);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -16,6 +28,18 @@ const Header = () => {
   const toggleLanguage = () => {
     setLanguage(language === 'EN' ? 'AR' : 'EN');
     document.documentElement.dir = language === 'EN' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language === 'EN' ? 'ar' : 'en';
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -31,26 +55,40 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">A</span>
-            </div>
+            <img 
+              src={aotumateLogo} 
+              alt="aotumate logo" 
+              className="w-8 h-8"
+            />
             <span className="text-xl font-bold text-foreground">aotumate</span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">
-              Services
-            </a>
-            <a href="#case-studies" className="text-muted-foreground hover:text-foreground transition-colors">
-              Case Studies
-            </a>
-            <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">
-              Testimonials
-            </a>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
-              FAQ
-            </a>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'خدماتنا' : 'Services'}
+            </button>
+            <button 
+              onClick={() => scrollToSection('case-studies')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonials')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'آراء العملاء' : 'Testimonials'}
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+            </button>
           </nav>
 
           {/* Controls */}
@@ -60,9 +98,19 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="p-2"
+              className="p-2 relative overflow-hidden"
             >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isDark ? 'dark' : 'light'}
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </motion.div>
+              </AnimatePresence>
             </Button>
 
             {/* Language Toggle */}
@@ -77,8 +125,11 @@ const Header = () => {
             </Button>
 
             {/* CTA Button */}
-            <Button className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90">
-              Book Your Call
+            <Button 
+              onClick={() => setIsBookingOpen(true)}
+              className="hidden sm:inline-flex bg-warning text-warning-foreground hover:bg-warning/90"
+            >
+              {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -102,25 +153,46 @@ const Header = () => {
             className="md:hidden border-t border-border/30 py-4"
           >
             <nav className="flex flex-col space-y-4">
-              <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">
-                Services
-              </a>
-              <a href="#case-studies" className="text-muted-foreground hover:text-foreground transition-colors">
-                Case Studies
-              </a>
-              <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">
-                Testimonials
-              </a>
-              <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
-                FAQ
-              </a>
-              <Button className="bg-warning text-warning-foreground hover:bg-warning/90 w-full">
-                Book Your Call
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                {language === 'AR' ? 'خدماتنا' : 'Services'}
+              </button>
+              <button 
+                onClick={() => scrollToSection('case-studies')}
+                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                {language === 'AR' ? 'دراسات الحالة' : 'Case Studies'}
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                {language === 'AR' ? 'آراء العملاء' : 'Testimonials'}
+              </button>
+              <button 
+                onClick={() => scrollToSection('faq')}
+                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+              >
+                {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQ'}
+              </button>
+              <Button 
+                onClick={() => setIsBookingOpen(true)}
+                className="bg-warning text-warning-foreground hover:bg-warning/90 w-full"
+              >
+                {language === 'AR' ? 'احجز مكالمتك' : 'Book Your Call'}
               </Button>
             </nav>
           </motion.div>
         )}
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingOpen} 
+        onClose={() => setIsBookingOpen(false)} 
+      />
     </motion.header>
   );
 };

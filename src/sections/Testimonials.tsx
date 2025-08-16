@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Star, Quote, CheckCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Testimonials = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const testimonials = [
     {
       name: "Sarah Chen",
