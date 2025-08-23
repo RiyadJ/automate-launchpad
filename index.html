@@ -24,8 +24,9 @@
 
     <!-- n8n Chat styles -->
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-    <!-- Aotumate chat skin -->
+    <!-- Aotumate Chat skin -->
     <style>
       :root{
         /* Brand / surfaces */
@@ -35,11 +36,11 @@
         --aotu-muted: #9ca3af;
         --aotu-white: #ffffff;
 
-        /* Accents (match site) */
+        /* Accents */
         --aotu-indigo: #6366f1;      /* primary */
         --aotu-indigo-600: #4f46e5;  /* active */
         --aotu-indigo-550: #5558e6;  /* hover */
-        --aotu-lime: #a3e635;        /* CTA accent (secondary) */
+        --aotu-lime: #a3e635;        /* secondary/CTA */
 
         /* Sizing */
         --aotu-width: clamp(340px, 34vw, 420px);
@@ -110,9 +111,7 @@
         border: 1px solid rgba(148,163,184,.14);
         box-shadow: 0 16px 44px rgba(0,0,0,.48);
       }
-      .n8n-chat__header{
-        border-bottom: 1px solid rgba(99,102,241,.28);
-      }
+      .n8n-chat__header{ border-bottom: 1px solid rgba(99,102,241,.28); }
       .n8n-chat__toggle{
         margin: 12px;
         box-shadow: 0 8px 28px rgba(79,70,229,.42);
@@ -136,12 +135,13 @@
     <!-- Chat mount target -->
     <div id="aotumate-chat"></div>
 
-    <!-- Aotumate Chat (mounted once, survives HMR safely) -->
-    <script type="module">
-      if (!window.__aotumateChatMounted) {
+    <!-- Aotumate Chat (dynamic import to avoid Rollup HTML ESM parsing) -->
+    <script>
+      (async () => {
+        if (window.__aotumateChatMounted) return;
         window.__aotumateChatMounted = true;
 
-        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
 
         const qs = new URLSearchParams(location.search);
         const utm = Object.fromEntries(
@@ -188,22 +188,17 @@
           },
           target: '#aotumate-chat',
           mode: 'window',
-
           chatInputKey: 'chatInput',
           chatSessionKey: 'sessionId',
           loadPreviousSession: true,
-
-          defaultLanguage: 'en',  // change to 'ar' if you want Arabic by default
+          defaultLanguage: 'en',
           i18n,
           initialMessages,
-
           enableStreaming: true,
           showWelcomeScreen: true,
           metadata
-          // allowFileUploads: true,
-          // allowedFilesMimeTypes: 'image/*,application/pdf'
         });
-      }
+      })();
     </script>
 
     <!-- Your app -->
