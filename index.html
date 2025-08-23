@@ -6,27 +6,207 @@
     <title>Automate Your Business</title>
     <meta name="description" content="Lovable Generated Project" />
     <meta name="author" content="Lovable" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
     <link rel="icon" type="image/png" href="/favicon.png" />
-    
+
     <meta property="og:title" content="Automate Your Business" />
     <meta property="og:description" content="Lovable Generated Project" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- n8n Chat styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <!-- Aotumate chat skin -->
+    <style>
+      :root{
+        /* Brand / surfaces */
+        --aotu-bg: #0b0f19;
+        --aotu-panel: #0f172a;
+        --aotu-text: #e5e7eb;
+        --aotu-muted: #9ca3af;
+        --aotu-white: #ffffff;
+
+        /* Accents (match site) */
+        --aotu-indigo: #6366f1;      /* primary */
+        --aotu-indigo-600: #4f46e5;  /* active */
+        --aotu-indigo-550: #5558e6;  /* hover */
+        --aotu-lime: #a3e635;        /* CTA accent (secondary) */
+
+        /* Sizing */
+        --aotu-width: clamp(340px, 34vw, 420px);
+        --aotu-height: clamp(560px, 70vh, 680px);
+        --aotu-radius: 18px;
+        --aotu-spacing: 12px;
+      }
+
+      /* Map to n8n chat vars */
+      :root{
+        --chat--color-primary: var(--aotu-indigo);
+        --chat--color-primary-shade-50: var(--aotu-indigo-550);
+        --chat--color-primary-shade-100: var(--aotu-indigo-600);
+
+        --chat--color-secondary: var(--aotu-lime);
+        --chat--color-secondary-shade-50: #84cc16;
+
+        --chat--color-white: var(--aotu-white);
+        --chat--color-light: #101827;
+        --chat--color-light-shade-50: #0f172a;
+        --chat--color-light-shade-100: #0b1220;
+        --chat--color-medium: #1f2937;
+        --chat--color-dark: var(--aotu-bg);
+        --chat--color-disabled: #6b7280;
+        --chat--color-typing: #374151;
+
+        --chat--spacing: var(--aotu-spacing);
+        --chat--border-radius: var(--aotu-radius);
+        --chat--transition-duration: .18s;
+
+        --chat--window--width: var(--aotu-width);
+        --chat--window--height: var(--aotu-height);
+
+        /* Header */
+        --chat--header-height: auto;
+        --chat--header--padding: calc(var(--aotu-spacing) * 1.25);
+        --chat--header--background: linear-gradient(135deg,#0c1224 0%,#0e142b 60%,#0b0f19 100%);
+        --chat--header--color: var(--aotu-white);
+        --chat--heading--font-size: 1rem;
+        --chat--subtitle--font-size: .86rem;
+        --chat--subtitle--line-height: 1.6;
+
+        /* Messages */
+        --chat--message--font-size: .96rem;
+        --chat--message--padding: calc(var(--aotu-spacing) * 1.05);
+        --chat--message--border-radius: calc(var(--aotu-radius) - 6px);
+        --chat--message-line-height: 1.7;
+        --chat--message--bot--background: var(--aotu-panel);
+        --chat--message--bot--color: var(--aotu-text);
+        --chat--message--bot--border: 1px solid #111827;
+        --chat--message--user--background: var(--aotu-indigo);
+        --chat--message--user--color: var(--aotu-white);
+        --chat--message--user--border: none;
+        --chat--message--pre--background: rgba(255,255,255,.04);
+
+        /* Input / launcher */
+        --chat--textarea--height: 54px;
+        --chat--toggle--background: var(--aotu-indigo);
+        --chat--toggle--hover--background: var(--aotu-indigo-550);
+        --chat--toggle--active--background: var(--aotu-indigo-600);
+        --chat--toggle--color: var(--aotu-white);
+        --chat--toggle--size: 58px;
+      }
+
+      /* polish */
+      .n8n-chat__window{
+        backdrop-filter: saturate(140%) blur(6px);
+        border: 1px solid rgba(148,163,184,.14);
+        box-shadow: 0 16px 44px rgba(0,0,0,.48);
+      }
+      .n8n-chat__header{
+        border-bottom: 1px solid rgba(99,102,241,.28);
+      }
+      .n8n-chat__toggle{
+        margin: 12px;
+        box-shadow: 0 8px 28px rgba(79,70,229,.42);
+      }
+      .n8n-chat__message--user{
+        background: linear-gradient(135deg,#6366f1 0%,#4f46e5 100%) !important;
+      }
+      .n8n-chat__message pre{
+        border-radius: 12px;
+        border: 1px solid #1f2937;
+        padding: 10px 12px;
+        font-size: .9rem;
+        overflow-x: auto;
+      }
+    </style>
   </head>
 
   <body>
     <div id="root"></div>
+
+    <!-- Chat mount target -->
+    <div id="aotumate-chat"></div>
+
+    <!-- Aotumate Chat (mounted once, survives HMR safely) -->
+    <script type="module">
+      if (!window.__aotumateChatMounted) {
+        window.__aotumateChatMounted = true;
+
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        const qs = new URLSearchParams(location.search);
+        const utm = Object.fromEntries(
+          ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].map(k => [k, qs.get(k) || ''])
+        );
+        const metadata = {
+          site: 'aotumate.com',
+          path: location.pathname,
+          referrer: document.referrer || '',
+          tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+          ...utm,
+        };
+
+        const i18n = {
+          en: {
+            title: 'Aotumate Assistant',
+            subtitle: 'No manual work. Describe your process — I’ll design the automation.',
+            footer: '',
+            getStarted: 'New Conversation',
+            inputPlaceholder: 'Type your question…',
+          },
+          ar: {
+            title: 'مساعد Aotumate',
+            subtitle: 'وصف العملية الحالية — وأنا أصمّم لك الأتمتة.',
+            footer: '',
+            getStarted: 'بدء محادثة جديدة',
+            inputPlaceholder: 'اكتب سؤالك…',
+          },
+        };
+
+        const initialMessages = [
+          "Hey—I'm your Aotumate copilot.",
+          "Tell me the apps you use, the trigger, and the desired outcome. I’ll outline a working flow and ROI estimate."
+        ];
+
+        createChat({
+          webhookUrl: 'https://n8n.operata.tech/webhook/d3ca59c1-5555-4124-9e0f-4d1a000dee7d/chat',
+          webhookConfig: {
+            method: 'POST',
+            headers: {
+              'X-Client-Origin': location.origin,
+              'X-Client-Path': location.pathname
+            }
+          },
+          target: '#aotumate-chat',
+          mode: 'window',
+
+          chatInputKey: 'chatInput',
+          chatSessionKey: 'sessionId',
+          loadPreviousSession: true,
+
+          defaultLanguage: 'en',  // change to 'ar' if you want Arabic by default
+          i18n,
+          initialMessages,
+
+          enableStreaming: true,
+          showWelcomeScreen: true,
+          metadata
+          // allowFileUploads: true,
+          // allowedFilesMimeTypes: 'image/*,application/pdf'
+        });
+      }
+    </script>
+
+    <!-- Your app -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
