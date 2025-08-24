@@ -36,10 +36,10 @@
         --aotu-muted: #9ca3af;
         --aotu-white: #ffffff;
 
-        /* Accents */
-        --aotu-indigo: #6366f1;      /* primary */
-        --aotu-indigo-600: #4f46e5;  /* active */
-        --aotu-indigo-550: #5558e6;  /* hover */
+        /* Accents (darker indigo) */
+        --aotu-indigo: #4f46e5;      /* darker primary */
+        --aotu-indigo-550: #4b51e0;  /* hover */
+        --aotu-indigo-600: #4338ca;  /* active */
         --aotu-lime: #a3e635;        /* secondary/CTA */
 
         /* Sizing */
@@ -110,14 +110,21 @@
         backdrop-filter: saturate(140%) blur(6px);
         border: 1px solid rgba(148,163,184,.14);
         box-shadow: 0 16px 44px rgba(0,0,0,.48);
+        /* 5) pad window from edges */
+        right: 28px !important;
+        bottom: 112px !important; /* keep above launcher */
       }
       .n8n-chat__header{ border-bottom: 1px solid rgba(99,102,241,.28); }
       .n8n-chat__toggle{
-        margin: 12px;
-        box-shadow: 0 8px 28px rgba(79,70,229,.42);
+        /* 5) pad launcher from corner */
+        right: 24px !important;
+        bottom: 24px !important;
+        margin: 0;
+        box-shadow: 0 8px 28px rgba(67,56,202,.45);
       }
       .n8n-chat__message--user{
-        background: linear-gradient(135deg,#6366f1 0%,#4f46e5 100%) !important;
+        /* darker gradient to match new primary */
+        background: linear-gradient(135deg,#4f46e5 0%,#4338ca 100%) !important;
       }
       .n8n-chat__message pre{
         border-radius: 12px;
@@ -125,6 +132,12 @@
         padding: 10px 12px;
         font-size: .9rem;
         overflow-x: auto;
+      }
+      /* 1) Hide "Powered by n8n" */
+      .n8n-chat__powered,
+      .n8n-chat__powered-by,
+      .n8n-chat__footer a[href*="n8n"]{
+        display: none !important;
       }
     </style>
   </head>
@@ -157,24 +170,28 @@
 
         const i18n = {
           en: {
-            title: 'Aotumate Assistant',
-            subtitle: 'No manual work. Describe your process — I’ll design the automation.',
+            /* 4) Rename assistant */
+            title: 'Aotumate Support',
+            /* 3) General subtitle for support/Q&A/booking */
+            subtitle: 'Ask anything about automations, support, or booking a consultation.',
             footer: '',
-            getStarted: 'New Conversation',
-            inputPlaceholder: 'Type your question…',
+            /* 2) We’ll disable welcome screen; keep label just in case */
+            getStarted: 'Start',
+            inputPlaceholder: 'How can I help you today?',
           },
           ar: {
-            title: 'مساعد Aotumate',
-            subtitle: 'وصف العملية الحالية — وأنا أصمّم لك الأتمتة.',
+            title: 'دعم Aotumate',
+            subtitle: 'اسأل عن الأتمتة أو الدعم أو حجز استشارة.',
             footer: '',
-            getStarted: 'بدء محادثة جديدة',
-            inputPlaceholder: 'اكتب سؤالك…',
+            getStarted: 'ابدأ',
+            inputPlaceholder: 'كيف أقدر أساعدك اليوم؟',
           },
         };
 
+        /* 7) Neutral initial messages */
         const initialMessages = [
-          "Hey—I'm your Aotumate copilot.",
-          "Tell me the apps you use, the trigger, and the desired outcome. I’ll outline a working flow and ROI estimate."
+          "Hey — I'm Aotumate Copilot.",
+          "How can I help you today? I can answer questions, help book a call, or check your request status."
         ];
 
         createChat({
@@ -188,14 +205,19 @@
           },
           target: '#aotumate-chat',
           mode: 'window',
+
           chatInputKey: 'chatInput',
           chatSessionKey: 'sessionId',
           loadPreviousSession: true,
+
           defaultLanguage: 'en',
           i18n,
           initialMessages,
+
           enableStreaming: true,
-          showWelcomeScreen: true,
+          /* 2) Remove “New Conversation” hero */
+          showWelcomeScreen: false,
+
           metadata
         });
       })();
