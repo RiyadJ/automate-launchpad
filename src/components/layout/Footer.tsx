@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, CalendarDays, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PrivacyPolicy from '@/components/ui/privacy-policy';
 import TermsOfService from '@/components/ui/terms-of-service';
 
@@ -8,6 +8,19 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
+  const [language, setLanguage] = useState('EN');
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
+    setLanguage(savedLanguage);
+
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener);
+  }, []);
 
   return (
     <footer className="bg-card border-t border-border">
@@ -35,7 +48,10 @@ const Footer = () => {
             </motion.div>
             
             <p className="text-muted-foreground leading-relaxed">
-              We eliminate repetitive tasks so your team can focus on what actually grows your business.
+              {language === 'AR' 
+                ? 'نحن نقضي على المهام المتكررة حتى يتمكن فريقك من التركيز على ما ينمي عملك فعلاً.'
+                : 'We eliminate repetitive tasks so your team can focus on what actually grows your business.'
+              }
             </p>
             
             <div className="flex flex-wrap gap-3">
@@ -107,9 +123,11 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              {language === 'AR' ? 'تواصل معنا' : 'Contact'}
+            </h3>
             <ul className="space-y-3">
-              <li className="flex items-center space-x-3 text-muted-foreground">
+              <li className={`flex items-center text-muted-foreground ${language === 'AR' ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <Mail className="w-4 h-4 text-primary" />
                 <span>Riyad@aotumate.com</span>
               </li>
@@ -118,15 +136,19 @@ const Footer = () => {
                   href="https://cal.com/riyad-jaamour/30-mins-discovery-call"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 hover:text-foreground transition-colors"
+                  className={`flex items-center hover:text-foreground transition-colors ${language === 'AR' ? 'space-x-reverse space-x-3' : 'space-x-3'}`}
                 >
                   <CalendarDays className="w-4 h-4 text-primary" />
-                  <span>Book Free Consultation Call</span>
+                  <span>
+                    {language === 'AR' ? 'احجز مكالمة استشارة مجانية' : 'Book Free Consultation Call'}
+                  </span>
                 </a>
               </li>
-              <li className="flex items-center space-x-3 text-muted-foreground">
+              <li className={`flex items-center text-muted-foreground ${language === 'AR' ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>Jeddah, SA</span>
+                <span>
+                  {language === 'AR' ? 'جدة، السعودية' : 'Jeddah, SA'}
+                </span>
               </li>
             </ul>
           </div>
@@ -135,21 +157,21 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border py-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} aotumate. All rights reserved.
+            © {currentYear} aotumate. {language === 'AR' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
           </p>
           
-          <div className="flex space-x-6 text-sm">
+          <div className={`flex text-sm ${language === 'AR' ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
             <button 
               onClick={() => setShowPrivacy(true)}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              {language === 'AR' ? 'سياسة الخصوصية' : 'Privacy Policy'}
             </button>
             <button 
               onClick={() => setShowTerms(true)}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Terms of Service
+              {language === 'AR' ? 'شروط الخدمة' : 'Terms of Service'}
             </button>
           </div>
         </div>

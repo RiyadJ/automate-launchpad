@@ -9,7 +9,15 @@ const FAQ = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   useEffect(() => {
-    setLanguage(document.documentElement.lang === 'ar' ? 'AR' : 'EN');
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
+    setLanguage(savedLanguage);
+
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener);
   }, []);
 
   const faqsEN = [

@@ -9,8 +9,15 @@ const HowItWorks = () => {
   const [language, setLanguage] = useState('EN');
 
   useEffect(() => {
-    const detectedLanguage = document.documentElement.lang === 'ar' ? 'AR' : 'EN';
-    setLanguage(detectedLanguage);
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
+    setLanguage(savedLanguage);
+
+    const handleLanguageChange = (event: CustomEvent) => {
+      setLanguage(event.detail);
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange as EventListener);
+    return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener);
   }, []);
 
   const steps = [

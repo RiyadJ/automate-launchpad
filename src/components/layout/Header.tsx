@@ -10,13 +10,19 @@ const Header = () => {
   const [language, setLanguage] = useState('EN');
   const [showNavCTA, setShowNavCTA] = useState(false);
 
-  // Initialize theme based on system preference
+  // Initialize theme and language
   useEffect(() => {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setIsDark(systemPrefersDark);
     if (!systemPrefersDark) {
       document.documentElement.classList.add('light');
     }
+
+    // Initialize language from localStorage or default to EN
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
+    setLanguage(savedLanguage);
+    document.documentElement.dir = savedLanguage === 'AR' ? 'rtl' : 'ltr';
+    document.documentElement.lang = savedLanguage === 'AR' ? 'ar' : 'en';
 
     // Check for scroll to show/hide nav CTA
     const handleScroll = () => {
@@ -37,12 +43,16 @@ const Header = () => {
   };
 
   const toggleLanguage = () => {
-    setLanguage(language === 'EN' ? 'AR' : 'EN');
-    document.documentElement.dir = language === 'EN' ? 'rtl' : 'ltr';
-    document.documentElement.lang = language === 'EN' ? 'ar' : 'en';
+    const newLanguage = language === 'EN' ? 'AR' : 'EN';
+    setLanguage(newLanguage);
+    document.documentElement.dir = newLanguage === 'AR' ? 'rtl' : 'ltr';
+    document.documentElement.lang = newLanguage === 'AR' ? 'ar' : 'en';
     
-    // Reload the page to apply language changes to all sections
-    window.location.reload();
+    // Store language preference
+    localStorage.setItem('preferredLanguage', newLanguage);
+    
+    // Trigger custom event to update all components
+    window.dispatchEvent(new CustomEvent('languageChange', { detail: newLanguage }));
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -78,7 +88,13 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className={`hidden md:flex items-center ${language === 'AR' ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
+            <button 
+              onClick={() => scrollToSection('comparison')}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {language === 'AR' ? 'المقارنة' : 'Comparison'}
+            </button>
             <button 
               onClick={() => scrollToSection('services')}
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -179,26 +195,32 @@ const Header = () => {
           >
             <nav className="flex flex-col space-y-4">
               <button 
+                onClick={() => scrollToSection('comparison')}
+                className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
+              >
+                {language === 'AR' ? 'المقارنة' : 'Comparison'}
+              </button>
+              <button 
                 onClick={() => scrollToSection('services')}
-                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+                className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
               >
                 {language === 'AR' ? 'خدماتنا' : 'Services'}
               </button>
               <button 
                 onClick={() => scrollToSection('how-it-works')}
-                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+                className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
               >
                 {language === 'AR' ? 'كيف نعمل' : 'How It Works'}
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}
-                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+                className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
               >
                 {language === 'AR' ? 'آراء العملاء' : 'Testimonials'}
               </button>
               <button 
                 onClick={() => scrollToSection('faq')}
-                className="text-muted-foreground hover:text-foreground transition-colors text-left"
+                className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
               >
                 {language === 'AR' ? 'الأسئلة الشائعة' : 'FAQs'}
               </button>
