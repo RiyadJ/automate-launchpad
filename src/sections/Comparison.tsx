@@ -93,7 +93,7 @@ const Comparison = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
+    <section id="comparison" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -105,11 +105,11 @@ const Comparison = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {language === 'AR' ? (
               <>
-                العمل اليدوي مقابل الأتمتة
+                عملك يدوي؟
               </>
             ) : (
               <>
-                Manual Work vs Automation
+                Working Manually?
               </>
             )}
           </h2>

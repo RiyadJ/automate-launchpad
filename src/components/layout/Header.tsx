@@ -93,7 +93,7 @@ const Header = () => {
               onClick={() => scrollToSection('comparison')}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              {language === 'AR' ? 'المقارنة' : 'Comparison'}
+              {language === 'AR' ? 'عملك يدوي؟' : 'Working Manually?'}
             </button>
             <button 
               onClick={() => scrollToSection('services')}
@@ -198,7 +198,7 @@ const Header = () => {
                 onClick={() => scrollToSection('comparison')}
                 className={`text-muted-foreground hover:text-foreground transition-colors ${language === 'AR' ? 'text-right' : 'text-left'}`}
               >
-                {language === 'AR' ? 'المقارنة' : 'Comparison'}
+                {language === 'AR' ? 'عملك يدوي؟' : 'Working Manually?'}
               </button>
               <button 
                 onClick={() => scrollToSection('services')}
