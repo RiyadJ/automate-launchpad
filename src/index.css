@@ -213,20 +213,27 @@ All colors MUST be HSL.
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height - accounts for mobile browser chrome */
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap-container::-webkit-scrollbar {
+  display: none;
 }
 
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
 }
 
-/* Hide scrollbar but keep functionality */
-.snap-container::-webkit-scrollbar {
-  display: none;
-}
-
-.snap-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Mobile-specific adjustments for sections with content that might overflow */
+@media (max-width: 768px) {
+  .snap-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }

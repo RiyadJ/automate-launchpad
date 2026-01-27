@@ -38,7 +38,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="snap-section relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="snap-section relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <svg

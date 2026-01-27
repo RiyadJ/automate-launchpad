@@ -32,14 +32,14 @@ const Comparison = () => {
   ];
 
   return (
-    <section id="comparison" className="snap-section h-screen flex items-center bg-background">
+    <section id="comparison" className="snap-section min-h-[100dvh] flex items-center py-20 md:py-0 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-24"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
             {language === 'AR' ? 'يدوي مقابل آلي' : 'Manual vs Automated'}
