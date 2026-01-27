@@ -20,7 +20,7 @@ const Index = () => {
         <Testimonials />
         <FAQ />
         {/* CTA and Footer grouped as the last snap section */}
-        <div className="snap-section min-h-0 md:min-h-screen flex flex-col justify-center py-20 md:py-0">
+        <div className="snap-section min-h-screen flex flex-col justify-center">
           <CTA />
           <Footer />
         </div>

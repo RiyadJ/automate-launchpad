@@ -32,7 +32,7 @@ const Comparison = () => {
   ];
 
   return (
-    <section id="comparison" className="snap-section min-h-0 md:min-h-[100dvh] flex items-center py-20 md:py-0 bg-background">
+    <section id="comparison" className="snap-section min-h-[100dvh] flex items-center py-20 md:py-0 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
