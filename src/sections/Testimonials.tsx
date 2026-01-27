@@ -1,15 +1,10 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Marquee } from "@devnomic/marquee";
 
 const Testimonials = () => {
   const [language, setLanguage] = useState("EN");
 
   useEffect(() => {
-    console.log(
-      "Testimonials component mounted and displaying client stories."
-    );
     const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
     setLanguage(savedLanguage);
 
@@ -23,137 +18,61 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: language === "AR" ? "سارة أحمد" : "Sarah Ahmed",
-      title: language === "AR" ? "مديرة العمليات" : "Operations Manager",
-      company: "TechFlow Inc",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png",
-      rating: 5,
-      testimonial:
-        language === "AR"
-          ? "لقد وفرت أتمتة أوتوميت لنا 180 ساعة شهرياً. فريقنا الآن يركز على النمو الاستراتيجي بدلاً من الأعمال الإدارية."
-          : "Aotumate's automation saved us 180 hours monthly. Our team now focuses on strategic growth instead of admin work.",
+      name: language === "AR" ? "سارة أحمد" : "Sarah A.",
+      company: "TechFlow",
+      quote: language === "AR"
+        ? "180 ساعة توفر شهرياً."
+        : "180 hours saved monthly."
     },
     {
-      name: language === "AR" ? "مايكل تشين" : "Michael Chen",
-      title: language === "AR" ? "الرئيس التنفيذي" : "CEO",
-      company: "DataSync Corp",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png",
-      rating: 5,
-      testimonial:
-        language === "AR"
-          ? "عائد الاستثمار كان فورياً. استرددنا تكلفة الأتمتة خلال الشهر الأول من خلال الوقت المُوفر والكفاءة المُحسنة."
-          : "ROI was immediate. We recovered the automation cost in the first month through saved time and improved efficiency.",
+      name: language === "AR" ? "مايكل تشين" : "Michael C.",
+      company: "DataSync",
+      quote: language === "AR"
+        ? "عائد الاستثمار في الشهر الأول."
+        : "ROI in the first month."
     },
     {
-      name: language === "AR" ? "إميلي جونسون" : "Emily Johnson",
-      title: language === "AR" ? "مديرة التسويق" : "Marketing Director",
-      company: "GrowthLab",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png",
-      rating: 5,
-      testimonial:
-        language === "AR"
-          ? "أنظمة رعاية العملاء المحتملين الآلية تولد لنا عملاء محتملين مؤهلين بجودة عالية 24/7. لقد تحولت مبيعاتنا."
-          : "The automated lead nurturing system generates high-quality qualified leads for us 24/7. Our sales have transformed.",
-    },
-    {
-      name: language === "AR" ? "ديفيد روبرتس" : "David Roberts",
-      title: language === "AR" ? "مؤسس مشارك" : "Co-Founder",
-      company: "AutoFlow Solutions",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png",
-      rating: 5,
-      testimonial:
-        language === "AR"
-          ? "تعالج أنظمتنا الآن 10 أضعاف الطلبات بنفس حجم الفريق. الأتمتة جعلت النمو السريع ممكناً."
-          : "Our systems now process 10x more orders with the same team size. Automation made rapid scaling possible.",
-    },
-    {
-      name: language === "AR" ? "ليزا مارتينيز" : "Lisa Martinez",
-      title: language === "AR" ? "نائبة الرئيس للعمليات" : "VP of Operations",
-      company: "StreamlineHQ",
-      avatar: "/lovable-uploads/948527d9-7f86-4dab-bef7-0d1a84c7ef82.png",
-      rating: 5,
-      testimonial:
-        language === "AR"
-          ? "ما أُعجبني حقاً هو كيف فهم فريق أوتوميت احتياجاتنا المحددة وقدم حلولاً مخصصة تماماً."
-          : "What impressed me most was how Aotumate's team understood our specific needs and delivered perfectly tailored solutions.",
-    },
+      name: language === "AR" ? "ديفيد روبرتس" : "David R.",
+      company: "AutoFlow",
+      quote: language === "AR"
+        ? "10x الطلبات، نفس الفريق."
+        : "10x orders, same team."
+    }
   ];
 
   return (
-    <section
-      id="testimonials"
-      className="py-20 bg-gradient-to-b from-muted/20 to-background"
-    >
+    <section id="testimonials" className="snap-section h-screen flex items-center bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-6">
-            <Star className="w-4 h-4 mr-2" />
-            <span className="text-sm font-medium">
-              {language === "AR"
-                ? "قصص نجاح العملاء"
-                : "Client Success Stories"}
-            </span>
-          </div>
-
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            {language === "AR" ? "ما يقوله عملاؤنا" : "What Our Clients Say"}
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            {language === "AR" ? "ما يقوله العملاء" : "What Clients Say"}
           </h2>
-
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {language === "AR"
-              ? "اكتشف كيف حولت الشركات عملياتها وحققت نتائج استثنائية"
-              : "Discover how companies transformed their operations and achieved extraordinary results"}
-          </p>
         </motion.div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative overflow-hidden">
-          <Marquee pauseOnHover>
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={`${testimonial.name}-${index}`}
-                className="flex-shrink-0 w-80 bg-card rounded-xl border border-border p-6 hover:border-primary/30 transition-colors cursor-pointer mr-8"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-foreground">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.title}, {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 text-warning fill-current"
-                    />
-                  ))}
-                </div>
-
-                <div className="relative">
-                  <Quote className="absolute -top-2 -left-2 w-8 h-8 text-primary/20" />
-                  <p className="text-muted-foreground leading-relaxed pl-6">
-                    {testimonial.testimonial}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </Marquee>
+        {/* Testimonials Grid */}
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="text-center"
+            >
+              <p className="text-xl text-foreground mb-6 italic">
+                "{testimonial.quote}"
+              </p>
+              <p className="text-primary font-medium">{testimonial.name}</p>
+              <p className="text-muted-foreground text-sm">{testimonial.company}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

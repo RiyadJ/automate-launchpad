@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Zap,
-  Clock,
-  TrendingUp,
   Bot,
   GitBranch,
   Workflow,
@@ -39,15 +37,8 @@ const Hero = () => {
     return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener);
   }, []);
 
-  const scrollToHowItWorks = () => {
-    const element = document.getElementById("how-it-works");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="snap-section relative h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <svg
@@ -320,27 +311,18 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Main Headline */}
+          {/* Main Headline - Simplified */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight font-space-grotesk"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight font-space-grotesk"
           >
             {language === "AR" ? (
-              <>
-                لا عمل يدوي.
-                <br />
-                استرد وقتك.
-                <br />
-                أتمت عملك.
-              </>
+              <>أتمت عملك.</>
             ) : (
               <>
-                No Manual Work.
-                <br />
-                Reclaim Your Time.
-                <br />A
+                A
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentLetter}
@@ -371,116 +353,56 @@ const Hero = () => {
             )}
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Short tagline */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-space-grotesk"
+            className="text-lg md:text-xl text-muted-foreground mb-16 max-w-xl mx-auto font-space-grotesk"
           >
             {language === "AR"
-              ? "نحن نصمم أنظمة الأتمتة المخصصة التي تقطع المهام المتكررة، وتقلل الأخطاء، وتحرر فريقك للتركيز على ما ينمي عملك فعلاً."
-              : "We design custom automation systems that cut repetitive tasks, reduce errors, and free your team to focus on what actually grows your business."}
+              ? "نبني أنظمة أتمتة تعمل."
+              : "We build automation systems that work."}
           </motion.p>
 
-          {/* Stats */}
+          {/* Single CTA Button - Gold outline style */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-8 mb-12"
-          >
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <Clock className="w-5 h-5 text-primary" />
-              <span className="text-sm">
-                {language === "AR" ? (
-                  <>
-                    <span className="font-bold">40-200</span> ساعة توفر شهرياً
-                  </>
-                ) : (
-                  <>
-                    <span className="font-bold">40-200</span> hours saved
-                    monthly
-                  </>
-                )}
-              </span>
-            </div>
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <TrendingUp className="w-5 h-5 text-secondary" />
-              <span className="text-sm">
-                {language === "AR"
-                  ? "95% تحسن في الكفاءة"
-                  : "95% efficiency boost"}
-              </span>
-            </div>
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <Zap className="w-5 h-5 text-success" />
-              <span className="text-sm">
-                {language === "AR"
-                  ? "عائد استثمار خلال 30 يوم"
-                  : "ROI visible in 30 days"}
-              </span>
-            </div>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
+            className="flex justify-center items-center mb-24"
             id="hero-cta"
           >
             <Button
               size="lg"
+              variant="outline"
               onClick={() =>
                 window.open(
                   "https://cal.com/riyad-jaamour/30-mins-discovery-call",
                   "_blank"
                 )
               }
-              className="bg-warning text-warning-foreground hover:bg-warning/90 px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold animate-pulse-glow group w-full sm:w-auto max-w-sm"
+              className="border-primary text-primary hover:bg-primary/10 hover:text-primary px-8 py-6 text-lg font-medium group"
             >
               {language === "AR"
-                ? "احصل على تدقيق مجاني للأتمتة"
-                : "Get Your Free Automation Audit"}
+                ? "تواصل معنا"
+                : "Get In Touch"}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={scrollToHowItWorks}
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 py-4 text-base sm:text-lg w-full sm:w-auto max-w-sm"
-            >
-              {language === "AR" ? "كيف نعمل" : "How It Works"}
             </Button>
           </motion.div>
 
-          {/* Trust Indicators */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm text-muted-foreground mt-8"
-          >
-            {language === "AR"
-              ? "✓ لا عقود طويلة الأمد • ✓ ضمان استرداد 30 يوم • ✓ إعداد خلال أسبوعين"
-              : "✓ No long-term contracts • ✓ 30-day money-back guarantee • ✓ Setup in 2 weeks"}
-          </motion.p>
-
-          {/* Trusted By Section */}
+          {/* Trusted By Section - KEPT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="mt-16"
+            transition={{ delay: 0.5 }}
+            className="mt-8"
           >
             <p className="text-sm text-muted-foreground mb-6">
               {language === "AR" ? "موثوق من قبل" : "Trusted by"}
             </p>
-            <div className="overflow-hidden relative max-w-4xl mx-auto">
-              <Marquee>
+            <div className="overflow-hidden relative max-w-4xl mx-auto" dir="ltr">
+              <Marquee fade={true} pauseOnHover={false}>
                 {[
                   "TechFlow Inc",
                   "DataSync Corp",

@@ -8,40 +8,40 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* aotumate.com color palette - Modern, Bold, Tech-focused */
-    --background: 216 20% 7%; /* #12131A - Dark gray/blue-black */
+    /* aotumate.com color palette - Premium, Minimalist, Gold accent */
+    --background: 0 0% 0%; /* #000000 - Pure black */
     --foreground: 0 0% 100%; /* #FFFFFF - White for sharp text */
 
-    --card: 216 15% 10%; /* #191B23 - Slightly lighter dark for cards */
+    --card: 0 0% 4%; /* #0a0a0a - Slightly lighter black for cards */
     --card-foreground: 0 0% 100%;
 
-    --popover: 216 15% 10%;
+    --popover: 0 0% 4%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 243 84% 69%; /* #6466FA - Vivid bluish-violet */
-    --primary-foreground: 0 0% 100%;
+    --primary: 40 46% 56%; /* #C4A05A - Warm gold/bronze */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 158 100% 54%; /* #12FFA2 - Aqua/mint for highlights */
-    --secondary-foreground: 216 20% 7%;
+    --secondary: 46 67% 52%; /* #D4AF37 - Gold gradient tone */
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 216 12% 14%; /* #22242C - Muted for subtle separation */
-    --muted-foreground: 225 14% 75%; /* #AEB4C0 - Cool light gray */
+    --muted: 0 0% 8%; /* #141414 - Subtle dark gray */
+    --muted-foreground: 0 0% 60%; /* #999999 - Muted gray text */
 
-    --accent: 158 100% 54%; /* #12FFA2 - Secondary accent */
-    --accent-foreground: 216 20% 7%;
+    --accent: 40 46% 56%; /* #C4A05A - Gold accent */
+    --accent-foreground: 0 0% 0%;
 
-    --success: 145 85% 47%; /* #16D98D - Soft green for success states */
-    --success-foreground: 0 0% 100%;
+    --success: 40 46% 56%; /* Using gold for consistency */
+    --success-foreground: 0 0% 0%;
 
-    --warning: 50 94% 64%; /* #F7D047 - Lemon yellow for urgent CTAs */
-    --warning-foreground: 216 20% 7%;
+    --warning: 40 46% 56%; /* #C4A05A - Gold for CTAs (outline style) */
+    --warning-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 216 12% 14%; /* #22242C - Muted borders */
-    --input: 216 12% 14%;
-    --ring: 243 84% 69%;
+    --border: 0 0% 12%; /* #1f1f1f - Subtle dark borders */
+    --input: 0 0% 8%;
+    --ring: 40 46% 56%;
 
     --radius: 0.5rem;
 
@@ -63,40 +63,40 @@ All colors MUST be HSL.
   }
 
   .light {
-    /* Light theme variant for aotumate.com */
+    /* Light theme variant for aotumate.com - Gold accent preserved */
     --background: 0 0% 98%; /* #FAFAFA - Light background */
-    --foreground: 216 20% 7%; /* #12131A - Dark text */
+    --foreground: 0 0% 5%; /* Near black text */
 
     --card: 0 0% 100%; /* #FFFFFF - White cards */
-    --card-foreground: 216 20% 7%;
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 216 20% 7%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 243 84% 69%; /* #6466FA - Keep primary consistent */
+    --primary: 40 46% 40%; /* Darker gold for light mode visibility */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 100% 54%; /* #12FFA2 - Keep secondary consistent */
-    --secondary-foreground: 216 20% 7%;
+    --secondary: 46 67% 45%; /* Darker gold gradient tone */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 94%; /* #F0F0F0 - Light muted */
-    --muted-foreground: 225 14% 45%; /* #757B8A - Darker gray for contrast */
+    --muted-foreground: 0 0% 40%; /* Medium gray for contrast */
 
-    --accent: 158 100% 54%;
-    --accent-foreground: 216 20% 7%;
+    --accent: 40 46% 40%;
+    --accent-foreground: 0 0% 100%;
 
-    --success: 145 85% 47%;
+    --success: 40 46% 40%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 50 94% 64%;
-    --warning-foreground: 216 20% 7%;
+    --warning: 40 46% 40%;
+    --warning-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 90%; /* #E6E6E6 - Light borders */
     --input: 0 0% 96%;
-    --ring: 243 84% 69%;
+    --ring: 40 46% 40%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -131,13 +131,21 @@ All colors MUST be HSL.
     animation: pulseGlow 2s ease-in-out infinite alternate;
   }
 
-  /* Gradient backgrounds */
+  /* Gradient backgrounds - Gold theme */
   .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    background: linear-gradient(135deg, hsl(40 46% 56%), hsl(46 67% 52%));
   }
 
   .gradient-surface {
-    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  }
+
+  /* Gold text gradient for emphasis */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(40 46% 56%), hsl(46 67% 62%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* Glass morphism effect */
@@ -192,10 +200,33 @@ All colors MUST be HSL.
 }
 
 @keyframes text-shine {
-  0%, 100% { 
+  0%, 100% {
     background-position: -200% center;
   }
-  50% { 
+  50% {
     background-position: 200% center;
   }
+}
+
+/* Scroll Snap Utilities */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Hide scrollbar but keep functionality */
+.snap-container::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
