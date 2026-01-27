@@ -26,21 +26,20 @@
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-    <!-- Aotumate Chat skin -->
+    <!-- Aotumate Chat skin - Gold/Bronze theme -->
     <style>
       :root{
         /* Brand / surfaces */
-        --aotu-bg: #0b0f19;
-        --aotu-panel: #0f172a;
+        --aotu-bg: #0a0a0a;
+        --aotu-panel: #111111;
         --aotu-text: #e5e7eb;
         --aotu-muted: #9ca3af;
         --aotu-white: #ffffff;
 
-        /* Accents (darker indigo) */
-        --aotu-indigo: #4f46e5;      /* darker primary */
-        --aotu-indigo-550: #4b51e0;  /* hover */
-        --aotu-indigo-600: #4338ca;  /* active */
-        --aotu-lime: #a3e635;        /* secondary/CTA */
+        /* Accents (Gold/Bronze) */
+        --aotu-gold: #C4A05A;         /* primary gold */
+        --aotu-gold-light: #D4AF37;   /* hover - brighter gold */
+        --aotu-gold-dark: #A88B4A;    /* active - darker gold */
 
         /* Sizing */
         --aotu-width: clamp(340px, 34vw, 420px);
@@ -51,21 +50,21 @@
 
       /* Map to n8n chat vars */
       :root{
-        --chat--color-primary: var(--aotu-indigo);
-        --chat--color-primary-shade-50: var(--aotu-indigo-550);
-        --chat--color-primary-shade-100: var(--aotu-indigo-600);
+        --chat--color-primary: var(--aotu-gold);
+        --chat--color-primary-shade-50: var(--aotu-gold-light);
+        --chat--color-primary-shade-100: var(--aotu-gold-dark);
 
-        --chat--color-secondary: var(--aotu-lime);
-        --chat--color-secondary-shade-50: #84cc16;
+        --chat--color-secondary: var(--aotu-gold-light);
+        --chat--color-secondary-shade-50: var(--aotu-gold);
 
         --chat--color-white: var(--aotu-white);
-        --chat--color-light: #101827;
-        --chat--color-light-shade-50: #0f172a;
-        --chat--color-light-shade-100: #0b1220;
-        --chat--color-medium: #1f2937;
+        --chat--color-light: #0a0a0a;
+        --chat--color-light-shade-50: #111111;
+        --chat--color-light-shade-100: #080808;
+        --chat--color-medium: #1a1a1a;
         --chat--color-dark: var(--aotu-bg);
         --chat--color-disabled: #6b7280;
-        --chat--color-typing: #374151;
+        --chat--color-typing: #262626;
 
         --chat--spacing: var(--aotu-spacing);
         --chat--border-radius: var(--aotu-radius);
@@ -77,7 +76,7 @@
         /* Header */
         --chat--header-height: auto;
         --chat--header--padding: calc(var(--aotu-spacing) * 1.25);
-        --chat--header--background: linear-gradient(135deg,#0c1224 0%,#0e142b 60%,#0b0f19 100%);
+        --chat--header--background: linear-gradient(135deg,#0a0a0a 0%,#111111 60%,#0a0a0a 100%);
         --chat--header--color: var(--aotu-white);
         --chat--heading--font-size: 1rem;
         --chat--subtitle--font-size: .86rem;
@@ -90,50 +89,51 @@
         --chat--message-line-height: 1.7;
         --chat--message--bot--background: var(--aotu-panel);
         --chat--message--bot--color: var(--aotu-text);
-        --chat--message--bot--border: 1px solid #111827;
-        --chat--message--user--background: var(--aotu-indigo);
-        --chat--message--user--color: var(--aotu-white);
+        --chat--message--bot--border: 1px solid #1f1f1f;
+        --chat--message--user--background: var(--aotu-gold);
+        --chat--message--user--color: #000000;
         --chat--message--user--border: none;
         --chat--message--pre--background: rgba(255,255,255,.04);
 
         /* Input / launcher */
         --chat--textarea--height: 54px;
-        --chat--toggle--background: var(--aotu-indigo);
-        --chat--toggle--hover--background: var(--aotu-indigo-550);
-        --chat--toggle--active--background: var(--aotu-indigo-600);
-        --chat--toggle--color: var(--aotu-white);
+        --chat--toggle--background: var(--aotu-gold);
+        --chat--toggle--hover--background: var(--aotu-gold-light);
+        --chat--toggle--active--background: var(--aotu-gold-dark);
+        --chat--toggle--color: #000000;
         --chat--toggle--size: 58px;
       }
 
       /* polish */
       .n8n-chat__window{
         backdrop-filter: saturate(140%) blur(6px);
-        border: 1px solid rgba(148,163,184,.14);
+        border: 1px solid rgba(196,160,90,.2);
         box-shadow: 0 16px 44px rgba(0,0,0,.48);
-        /* 5) pad window from edges */
+        /* pad window from edges */
         right: 28px !important;
         bottom: 112px !important; /* keep above launcher */
       }
-      .n8n-chat__header{ border-bottom: 1px solid rgba(99,102,241,.28); }
+      .n8n-chat__header{ border-bottom: 1px solid rgba(196,160,90,.3); }
       .n8n-chat__toggle{
-        /* 5) pad launcher from corner */
+        /* pad launcher from corner */
         right: 24px !important;
         bottom: 24px !important;
         margin: 0;
-        box-shadow: 0 8px 28px rgba(67,56,202,.45);
+        box-shadow: 0 8px 28px rgba(196,160,90,.35);
       }
       .n8n-chat__message--user{
-        /* darker gradient to match new primary */
-        background: linear-gradient(135deg,#4f46e5 0%,#4338ca 100%) !important;
+        /* gold gradient for user messages */
+        background: linear-gradient(135deg,#C4A05A 0%,#D4AF37 100%) !important;
+        color: #000000 !important;
       }
       .n8n-chat__message pre{
         border-radius: 12px;
-        border: 1px solid #1f2937;
+        border: 1px solid #1f1f1f;
         padding: 10px 12px;
         font-size: .9rem;
         overflow-x: auto;
       }
-      /* 1) Hide "Powered by n8n" */
+      /* Hide "Powered by n8n" */
       .n8n-chat__powered,
       .n8n-chat__powered-by,
       .n8n-chat__footer a[href*="n8n"]{
