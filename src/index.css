@@ -227,13 +227,12 @@ All colors MUST be HSL.
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  min-height: 100dvh; /* Dynamic viewport height for desktop */
 }
 
-/* Mobile-specific adjustments for sections with content that might overflow */
+/* Mobile: content-based height with snap preserved */
 @media (max-width: 768px) {
   .snap-section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    min-height: auto; /* Content determines height instead of full viewport */
   }
 }

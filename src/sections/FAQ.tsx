@@ -59,7 +59,7 @@ const FAQ = () => {
   const faqs = language === 'AR' ? faqsAR : faqsEN;
 
   return (
-    <section key="faq-section" id="faq" className="snap-section min-h-[100dvh] flex items-center py-20 md:py-0 bg-background">
+    <section key="faq-section" id="faq" className="snap-section min-h-0 md:min-h-[100dvh] flex items-center py-20 md:py-0 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
