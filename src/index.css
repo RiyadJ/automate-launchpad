@@ -215,7 +215,6 @@ All colors MUST be HSL.
   height: 100vh;
   height: 100dvh; /* Dynamic viewport height - accounts for mobile browser chrome */
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* 64px - accounts for fixed header height */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
