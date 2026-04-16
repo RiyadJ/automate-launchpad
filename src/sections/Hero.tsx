@@ -15,6 +15,9 @@ const TRUSTED_BY = [
   "Bayard Group",
   "Quarry North",
   "Vaughn & Kress",
+  "Tessera Collective",
+  "Wren & Caliber",
+  "Nordvelt Partners",
 ];
 
 const Hero = () => {
@@ -44,14 +47,15 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="snap-section relative min-h-[100dvh] flex items-center overflow-hidden"
+      className="snap-section relative flex items-start md:items-center overflow-hidden"
+      style={{ minHeight: "100dvh" }}
     >
       {/* ─── Background layers ─────────────────────────────────────── */}
       <ConstellationBg />
-      <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-background/85 to-background/92" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/96 via-background/92 to-background/88" />
 
       {/* ─── Content ───────────────────────────────────────────────── */}
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-24 md:py-0">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 pt-8 pb-32 md:py-0">
         <div className="max-w-7xl mx-auto">
           {/* Chapter stamp */}
           <motion.div
@@ -175,7 +179,7 @@ const Hero = () => {
           dir="ltr"
           style={{ direction: "ltr", unicodeBidi: "isolate" }}
         >
-          <Marquee fade={true} pauseOnHover={false}>
+          <Marquee fade={true} pauseOnHover={false} numberOfCopies={5}>
             {TRUSTED_BY.map((company, index) => (
               <span
                 key={`${company}-${index}`}

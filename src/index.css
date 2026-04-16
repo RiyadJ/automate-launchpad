@@ -271,8 +271,15 @@
 }
 
 @media (max-width: 768px) {
+  /* Disable snap on mobile — content sections overflow one viewport */
+  .snap-container {
+    scroll-snap-type: none;
+  }
   .snap-section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }

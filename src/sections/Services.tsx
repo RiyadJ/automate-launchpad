@@ -82,7 +82,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="snap-section min-h-[100dvh] flex items-center py-20 md:py-0 bg-background"
+      className="snap-section min-h-[100dvh] flex items-start pt-8 md:items-center md:pt-0 bg-background"
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
@@ -92,7 +92,7 @@ const Services = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-10 md:mb-16"
+            className="mb-6 md:mb-8"
           >
             <ChapterStamp
               index="03"
@@ -120,7 +120,7 @@ const Services = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-muted-foreground text-base max-w-[50ch] mb-16 md:mb-20 leading-relaxed"
+            className="text-muted-foreground text-base max-w-[50ch] mb-8 md:mb-10 leading-relaxed"
           >
             {isAr
               ? "كل مشروع يبدأ من عمليتك الحالية. نحدد ما يمكن أتمتته، نبنيه، ونسلّمه يعمل."
@@ -138,7 +138,7 @@ const Services = () => {
               <motion.div
                 key={svc.id}
                 variants={fadeUp}
-                className="border-t border-ink-line/50 py-8 md:py-10"
+                className="border-t border-ink-line/50 py-4 md:py-5"
               >
                 <div
                   className={`grid grid-cols-1 md:grid-cols-[auto_1fr_1.5fr] gap-4 md:gap-8 lg:gap-12 items-start ${
