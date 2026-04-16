@@ -401,7 +401,11 @@ const Hero = () => {
             <p className="text-sm text-muted-foreground mb-6">
               {language === "AR" ? "موثوق من قبل" : "Trusted by"}
             </p>
-            <div className="overflow-hidden relative max-w-4xl mx-auto" dir="ltr">
+            <div
+              className="overflow-hidden relative max-w-4xl mx-auto"
+              dir="ltr"
+              style={{ direction: "ltr", unicodeBidi: "isolate" }}
+            >
               <Marquee fade={true} pauseOnHover={false}>
                 {[
                   "TechFlow Inc",
