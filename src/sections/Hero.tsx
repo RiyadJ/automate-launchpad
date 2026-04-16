@@ -1,450 +1,207 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Zap,
-  Bot,
-  GitBranch,
-  Workflow,
-  Play,
-  Webhook,
-  Activity,
-} from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Marquee } from "@devnomic/marquee";
+import { ConstellationBg } from "@/components/brand/ConstellationBg";
+import { ChapterStamp } from "@/components/brand/ChapterStamp";
+import { MagneticButton } from "@/components/brand/MagneticButton";
+import { springCinematic } from "@/lib/motion";
+
+/* ─── Premium invented names (taste-skill: NO startup slop) ──────── */
+const TRUSTED_BY = [
+  "Halden Industries",
+  "Atelier Ostrum",
+  "Penumbra Labs",
+  "Bayard Group",
+  "Quarry North",
+  "Vaughn & Kress",
+];
 
 const Hero = () => {
   const [currentLetter, setCurrentLetter] = useState("o");
   const [language, setLanguage] = useState("EN");
 
+  /* Letter swap — preserved exactly */
   useEffect(() => {
-    console.log("Hero component mounted.");
     const interval = setInterval(() => {
       setCurrentLetter((prev) => (prev === "o" ? "u" : "o"));
-    }, 4000); // Increased from 2000ms to 4000ms for longer interval
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
+  /* Language sync */
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferredLanguage') || 'EN';
-    setLanguage(savedLanguage);
-
-    const handleLanguageChange = (event: CustomEvent) => {
-      setLanguage(event.detail);
-    };
-
-    window.addEventListener('languageChange', handleLanguageChange as EventListener);
-    return () => window.removeEventListener('languageChange', handleLanguageChange as EventListener);
+    const saved = localStorage.getItem("preferredLanguage") || "EN";
+    setLanguage(saved);
+    const handler = (e: CustomEvent) => setLanguage(e.detail);
+    window.addEventListener("languageChange", handler as EventListener);
+    return () =>
+      window.removeEventListener("languageChange", handler as EventListener);
   }, []);
 
+  const isAr = language === "AR";
+
   return (
-    <section className="snap-section relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1440 900"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <pattern
-              id="automation-grid"
-              x="0"
-              y="0"
-              width="100"
-              height="100"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="2"
-                fill="hsl(var(--primary))"
-                opacity="0.3"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#automation-grid)" />
+    <section
+      id="hero"
+      className="snap-section relative min-h-[100dvh] flex items-center overflow-hidden"
+    >
+      {/* ─── Background layers ─────────────────────────────────────── */}
+      <ConstellationBg />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-background/85 to-background/92" />
 
-          {/* Automation icons with glowing circles */}
-          <motion.circle
-            cx="200"
-            cy="150"
-            r="15"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--primary) / 0)",
-                "0 0 20px hsl(var(--primary) / 0.3)",
-                "0 0 0 hsl(var(--primary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0 }}
-          />
-          <foreignObject x="188" y="138" width="24" height="24">
-            <Bot className="w-6 h-6 text-primary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="600"
-            cy="300"
-            r="15"
-            stroke="hsl(var(--secondary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--secondary) / 0)",
-                "0 0 20px hsl(var(--secondary) / 0.3)",
-                "0 0 0 hsl(var(--secondary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-          />
-          <foreignObject x="588" y="288" width="24" height="24">
-            <GitBranch className="w-6 h-6 text-secondary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="1000"
-            cy="200"
-            r="15"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--primary) / 0)",
-                "0 0 20px hsl(var(--primary) / 0.3)",
-                "0 0 0 hsl(var(--primary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-          />
-          <foreignObject x="988" y="188" width="24" height="24">
-            <Workflow className="w-6 h-6 text-primary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="400"
-            cy="600"
-            r="15"
-            stroke="hsl(var(--secondary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--secondary) / 0)",
-                "0 0 20px hsl(var(--secondary) / 0.3)",
-                "0 0 0 hsl(var(--secondary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-          />
-          <foreignObject x="388" y="588" width="24" height="24">
-            <Webhook className="w-6 h-6 text-secondary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="800"
-            cy="500"
-            r="15"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--primary) / 0)",
-                "0 0 20px hsl(var(--primary) / 0.3)",
-                "0 0 0 hsl(var(--primary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 2 }}
-          />
-          <foreignObject x="788" y="488" width="24" height="24">
-            <Activity className="w-6 h-6 text-primary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="315"
-            cy="415"
-            r="15"
-            stroke="hsl(var(--secondary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--secondary) / 0)",
-                "0 0 20px hsl(var(--secondary) / 0.3)",
-                "0 0 0 hsl(var(--secondary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--secondary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--secondary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 2.5 }}
-          />
-          <foreignObject x="303" y="403" width="24" height="24">
-            <Play className="w-6 h-6 text-secondary opacity-90" />
-          </foreignObject>
-
-          <motion.circle
-            cx="1115"
-            cy="365"
-            r="15"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1"
-            fill="none"
-            opacity="0.4"
-            animate={{
-              boxShadow: [
-                "0 0 0 hsl(var(--primary) / 0)",
-                "0 0 20px hsl(var(--primary) / 0.3)",
-                "0 0 0 hsl(var(--primary) / 0)",
-              ],
-              filter: [
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-                "drop-shadow(0 0 8px hsl(var(--primary) / 0.6))",
-                "drop-shadow(0 0 0 hsl(var(--primary) / 0))",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 3 }}
-          />
-          <foreignObject x="1103" y="353" width="24" height="24">
-            <Zap className="w-6 h-6 text-primary opacity-90" />
-          </foreignObject>
-
-          {/* Animated connection lines with more turns and fade-out effect */}
-          <motion.path
-            d="M-100,150 L200,150 L315,415 L600,300 L1000,200 L1115,365 L1540,250"
-            stroke="hsl(var(--primary))"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0.5 }}
-            animate={{
-              pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.5, 0.5, 0],
-            }}
-            transition={{
-              duration: 16,
-              repeat: Infinity,
-              ease: "linear",
-              times: [0, 0.7, 0.9, 1],
-            }}
-          />
-          <motion.path
-            d="M-100,600 L400,600 L315,415 L800,500 L1000,200 L1115,365 L1540,350"
-            stroke="hsl(var(--secondary))"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0.4 }}
-            animate={{
-              pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.4, 0.4, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-              delay: 4,
-              times: [0, 0.7, 0.9, 1],
-            }}
-          />
-          <motion.path
-            d="M-100,400 L200,150 L600,300 L800,500 L400,600 L1115,365 L1540,450"
-            stroke="hsl(var(--primary))"
-            strokeWidth="1.5"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0.3 }}
-            animate={{
-              pathLength: [0, 1, 1, 1],
-              opacity: [0, 0.3, 0.3, 0],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "linear",
-              delay: 8,
-              times: [0, 0.7, 0.9, 1],
-            }}
-          />
-        </svg>
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Headline - Simplified */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight font-space-grotesk"
-          >
-            {language === "AR" ? (
-              <>أتمت عملك.</>
-            ) : (
-              <>
-                A
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentLetter}
-                    initial={{ y: 20, opacity: 0, rotateX: 90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: -20, opacity: 0, rotateX: -90 }}
-                    transition={{ duration: 0.5 }}
-                    className="inline-block"
-                  >
-                    {currentLetter}
-                  </motion.span>
-                </AnimatePresence>
-                t
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={`second-${currentLetter === "o" ? "u" : "o"}`}
-                    initial={{ y: -20, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: 20, opacity: 0, rotateX: 90 }}
-                    transition={{ duration: 0.5 }}
-                    className="inline-block"
-                  >
-                    {currentLetter === "o" ? "u" : "o"}
-                  </motion.span>
-                </AnimatePresence>
-                mate Your Business.
-              </>
-            )}
-          </motion.h1>
-
-          {/* Short tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground mb-16 max-w-xl mx-auto font-space-grotesk"
-          >
-            {language === "AR"
-              ? "نبني أنظمة أتمتة تعمل."
-              : "We build automation systems that work."}
-          </motion.p>
-
-          {/* Single CTA Button - Gold outline style */}
+      {/* ─── Content ───────────────────────────────────────────────── */}
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-24 md:py-0">
+        <div className="max-w-7xl mx-auto">
+          {/* Chapter stamp */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex justify-center items-center mb-24"
-            id="hero-cta"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
+            className="mb-10 md:mb-14"
           >
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() =>
-                window.open(
-                  "https://cal.com/riyad-jaamour/30-mins-discovery-call",
-                  "_blank"
-                )
-              }
-              className="border-primary text-primary hover:bg-primary/10 hover:text-primary px-8 py-6 text-lg font-medium group"
-            >
-              {language === "AR"
-                ? "تواصل معنا"
-                : "Get In Touch"}
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <ChapterStamp index="01" label="HERO" labelAr="البداية" language={language} />
           </motion.div>
 
-          {/* Trusted By Section - KEPT */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-8"
-          >
-            <p className="text-sm text-muted-foreground mb-6">
-              {language === "AR" ? "موثوق من قبل" : "Trusted by"}
-            </p>
-            <div
-              className="overflow-hidden relative max-w-4xl mx-auto"
-              dir="ltr"
-              style={{ direction: "ltr", unicodeBidi: "isolate" }}
+          {/* Left-aligned content (DESIGN_VARIANCE=8: anti-center) */}
+          <div className="max-w-3xl">
+            {/* Tech chip */}
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, ...springCinematic }}
+              className="tech-chip mb-8 inline-flex"
             >
-              <Marquee fade={true} pauseOnHover={false}>
-                {[
-                  "TechFlow Inc",
-                  "DataSync Corp",
-                  "AutoFlow Solutions",
-                  "GrowthLab",
-                  "StreamlineHQ",
-                  "InnovateCorp",
-                ].map((company, index) => (
-                  <motion.span
-                    key={`${company}-${index}`}
-                    className="text-muted-foreground font-medium px-6"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: index * 0.5,
-                    }}
-                  >
-                    {company}
-                  </motion.span>
-                ))}
-              </Marquee>
-            </div>
-          </motion.div>
+              {isAr ? "بنية تحتية للأتمتة" : "Operations Infrastructure"}
+            </motion.span>
+
+            {/* ─── H1 — editorial serif + letter swap (PRESERVED) ─── */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, ...springCinematic }}
+              className="font-editorial text-5xl md:text-7xl lg:text-[6.2rem] tracking-editorial-tight leading-[0.92] text-foreground mb-3"
+            >
+              {isAr ? (
+                <>أتمِت.</>
+              ) : (
+                <>
+                  A
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentLetter}
+                      initial={{ y: 20, opacity: 0, rotateX: 90 }}
+                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                      exit={{ y: -20, opacity: 0, rotateX: -90 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block"
+                    >
+                      {currentLetter}
+                    </motion.span>
+                  </AnimatePresence>
+                  t
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={`second-${currentLetter === "o" ? "u" : "o"}`}
+                      initial={{ y: -20, opacity: 0, rotateX: -90 }}
+                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                      exit={{ y: 20, opacity: 0, rotateX: 90 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block"
+                    >
+                      {currentLetter === "o" ? "u" : "o"}
+                    </motion.span>
+                  </AnimatePresence>
+                  mate.
+                </>
+              )}
+            </motion.h1>
+
+            {/* Gold rule */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="gold-rule mb-8 origin-left"
+            />
+
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, ...springCinematic }}
+              className="text-base md:text-lg text-muted-foreground max-w-[55ch] mb-12 leading-relaxed"
+            >
+              {isAr
+                ? "نصمّم ونبني أنظمة أتمتة تزيل العقبات دون أن تمسّ الجودة. عمليات هادئة، عوائد متراكمة."
+                : "We design and ship automation systems that remove bottlenecks without removing craft. Quiet operations, compounding returns."}
+            </motion.p>
+
+            {/* CTA — magnetic button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, ...springCinematic }}
+              id="hero-cta"
+            >
+              <MagneticButton
+                onClick={() =>
+                  window.open(
+                    "https://cal.com/riyad-jaamour/30-mins-discovery-call",
+                    "_blank",
+                  )
+                }
+              >
+                {isAr ? "احجز مكالمة استكشافية" : "Book a Discovery Call"}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </MagneticButton>
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Floating Elements */}
+      {/* ─── Trusted-by marquee — pinned to bottom ─────────────────── */}
       <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-10 w-16 h-16 bg-primary/20 rounded-full blur-xl"
-      />
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 1 }}
+        className="absolute bottom-14 md:bottom-16 left-0 right-0 z-10"
+      >
+        <p className="section-meta mb-4 px-6 md:px-12 lg:px-16">
+          {isAr ? "موثوق من قبل" : "Trusted by"}
+        </p>
+        <div
+          className="overflow-hidden relative"
+          dir="ltr"
+          style={{ direction: "ltr", unicodeBidi: "isolate" }}
+        >
+          <Marquee fade={true} pauseOnHover={false}>
+            {TRUSTED_BY.map((company, index) => (
+              <span
+                key={`${company}-${index}`}
+                className="text-steel/60 font-mono text-[0.72rem] uppercase tracking-mono-wide px-8"
+              >
+                {company}
+              </span>
+            ))}
+          </Marquee>
+        </div>
+      </motion.div>
+
+      {/* ─── Scroll indicator ──────────────────────────────────────── */}
       <motion.div
-        animate={{ y: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-40 right-20 w-20 h-20 bg-secondary/20 rounded-full blur-xl"
-      />
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="w-4 h-4 text-steel/40" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
