@@ -90,7 +90,7 @@ const Footer = () => {
                     : "/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"
                 }
                 alt="Aotumate"
-                className="h-5 w-auto"
+                className="h-7 w-auto"
               />
               <p className="text-muted-foreground/70 text-[0.85rem] leading-relaxed max-w-[40ch]">
                 {isAr

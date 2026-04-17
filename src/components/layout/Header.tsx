@@ -104,7 +104,7 @@ const Header = () => {
                     : "/lovable-uploads/f294ea93-bf1a-479a-98e1-b191f9897ffa.png"
                 }
                 alt="Aotumate"
-                className="h-5 w-auto"
+                className="h-7 w-auto"
               />
             </motion.div>
 

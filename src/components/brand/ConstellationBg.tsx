@@ -34,19 +34,24 @@ const glowSecondary = (delay: number) => ({
   transition: { duration: 3, repeat: Infinity, delay },
 });
 
+/*
+ * Nodes pushed to periphery — frame the content area, never overlap text.
+ * Left column (low cx), right column (high cx), one at bottom-center.
+ * Content area is roughly x:100-800 (LTR) or x:640-1340 (RTL).
+ */
 const nodes = [
-  { cx: 200, cy: 150, Icon: Bot, type: "primary", delay: 0 },
-  { cx: 600, cy: 300, Icon: GitBranch, type: "secondary", delay: 0.5 },
-  { cx: 1000, cy: 200, Icon: Workflow, type: "primary", delay: 1 },
-  { cx: 400, cy: 600, Icon: Webhook, type: "secondary", delay: 1.5 },
-  { cx: 800, cy: 500, Icon: Activity, type: "primary", delay: 2 },
-  { cx: 315, cy: 415, Icon: Play, type: "secondary", delay: 2.5 },
-  { cx: 1115, cy: 365, Icon: Zap, type: "primary", delay: 3 },
+  { cx: 100,  cy: 260, Icon: Bot,       type: "primary",   delay: 0 },
+  { cx: 1350, cy: 140, Icon: GitBranch,  type: "secondary", delay: 0.5 },
+  { cx: 720,  cy: 850, Icon: Workflow,   type: "primary",   delay: 1 },
+  { cx: 80,   cy: 750, Icon: Webhook,    type: "secondary", delay: 1.5 },
+  { cx: 1380, cy: 720, Icon: Activity,   type: "primary",   delay: 2 },
+  { cx: 50,   cy: 500, Icon: Play,       type: "secondary", delay: 2.5 },
+  { cx: 1400, cy: 450, Icon: Zap,        type: "primary",   delay: 3 },
 ] as const;
 
 const paths = [
   {
-    d: "M-100,150 L200,150 L315,415 L600,300 L1000,200 L1115,365 L1540,250",
+    d: "M-100,260 L100,260 L1350,140 L1400,450 L1540,500",
     stroke: "hsl(var(--primary))",
     strokeWidth: 2,
     duration: 16,
@@ -54,7 +59,7 @@ const paths = [
     peakOpacity: 0.5,
   },
   {
-    d: "M-100,600 L400,600 L315,415 L800,500 L1000,200 L1115,365 L1540,350",
+    d: "M-100,750 L80,750 L50,500 L720,850 L1380,720 L1540,680",
     stroke: "hsl(var(--secondary))",
     strokeWidth: 2,
     duration: 20,
@@ -62,7 +67,7 @@ const paths = [
     peakOpacity: 0.4,
   },
   {
-    d: "M-100,400 L200,150 L600,300 L800,500 L400,600 L1115,365 L1540,450",
+    d: "M-100,500 L50,500 L100,260 L1380,720 L720,850 L1540,850",
     stroke: "hsl(var(--primary))",
     strokeWidth: 1.5,
     duration: 18,

@@ -52,7 +52,7 @@ const Hero = () => {
     >
       {/* ─── Background layers ─────────────────────────────────────── */}
       <ConstellationBg />
-      <div className="absolute inset-0 bg-gradient-to-br from-background/96 via-background/92 to-background/88" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/94 via-background/88 to-background/85" />
 
       {/* ─── Content ───────────────────────────────────────────────── */}
       <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 pt-8 pb-32 md:py-0">
