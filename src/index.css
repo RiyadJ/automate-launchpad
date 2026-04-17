@@ -282,4 +282,8 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
+  /* Hide most constellation nodes + all paths on mobile */
+  .constellation-desktop {
+    display: none;
+  }
 }

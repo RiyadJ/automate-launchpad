@@ -94,14 +94,14 @@ const Comparison = () => {
               viewport={{ once: true }}
               className="md:pr-10 lg:pr-14"
             >
-              <span className="section-meta block mb-8">
+              <span className="section-meta block mb-8 text-[0.78rem] md:text-[0.65rem] font-semibold">
                 {isAr ? "بدون أتمتة" : "Without Aotumate"}
               </span>
               {PAIN_POINTS.map((item, i) => (
                 <motion.div
                   key={i}
                   variants={fadeUp}
-                  className="mb-8 last:mb-0"
+                  className="mb-5 md:mb-8 last:mb-0"
                 >
                   {/* Tick mark */}
                   <div className="flex items-start gap-4">
@@ -142,14 +142,14 @@ const Comparison = () => {
               viewport={{ once: true }}
               className="md:pl-10 lg:pl-14"
             >
-              <span className="section-meta block mb-8 text-gold/80">
+              <span className="section-meta block mb-8 text-gold/80 text-[0.78rem] md:text-[0.65rem] font-semibold">
                 {isAr ? "مع Aotumate" : "With Aotumate"}
               </span>
               {OUTCOMES.map((item, i) => (
                 <motion.div
                   key={i}
                   variants={fadeUp}
-                  className="mb-8 last:mb-0"
+                  className="mb-5 md:mb-8 last:mb-0"
                 >
                   <div className="flex items-start gap-4">
                     <span className="font-mono text-[0.62rem] text-gold/50 tabular-nums pt-1.5 shrink-0">

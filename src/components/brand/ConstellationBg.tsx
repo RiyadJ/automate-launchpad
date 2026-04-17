@@ -35,24 +35,27 @@ const glowSecondary = (delay: number) => ({
 });
 
 /*
- * Original positions restored. Only 3 nodes moved:
+ * Moved from original:
  *   Bot:      (200,150)→(200,280)  — down, clear header glass
- *   Play:     (315,415)→(60,500)   — far left, clear CTA button
- *   Activity: (800,500)→(800,800)  — down, clear Arabic text area
+ *   Webhook:  (400,600)→(400,720)  — down, clear CTA button
+ *   Activity: (800,500)→(800,680)  — down past Arabic text, above marquee
+ * Unchanged: GitBranch, Workflow, Play, Zap
+ *
+ * mobile: true → shown on mobile. Others hidden <md to reduce clutter.
  */
 const nodes = [
-  { cx: 200,  cy: 280, Icon: Bot,       type: "primary",   delay: 0 },
-  { cx: 600,  cy: 300, Icon: GitBranch,  type: "secondary", delay: 0.5 },
-  { cx: 1000, cy: 200, Icon: Workflow,   type: "primary",   delay: 1 },
-  { cx: 400,  cy: 600, Icon: Webhook,    type: "secondary", delay: 1.5 },
-  { cx: 800,  cy: 800, Icon: Activity,   type: "primary",   delay: 2 },
-  { cx: 60,   cy: 500, Icon: Play,       type: "secondary", delay: 2.5 },
-  { cx: 1115, cy: 365, Icon: Zap,        type: "primary",   delay: 3 },
-] as const;
+  { cx: 200,  cy: 280, Icon: Bot,       type: "primary",   delay: 0,   mobile: true },
+  { cx: 600,  cy: 300, Icon: GitBranch,  type: "secondary", delay: 0.5, mobile: false },
+  { cx: 1000, cy: 200, Icon: Workflow,   type: "primary",   delay: 1,   mobile: true },
+  { cx: 400,  cy: 720, Icon: Webhook,    type: "secondary", delay: 1.5, mobile: false },
+  { cx: 800,  cy: 680, Icon: Activity,   type: "primary",   delay: 2,   mobile: false },
+  { cx: 315,  cy: 415, Icon: Play,       type: "secondary", delay: 2.5, mobile: false },
+  { cx: 1115, cy: 365, Icon: Zap,        type: "primary",   delay: 3,   mobile: true },
+];
 
 const paths = [
   {
-    d: "M-100,280 L200,280 L60,500 L600,300 L1000,200 L1115,365 L1540,250",
+    d: "M-100,280 L200,280 L315,415 L600,300 L1000,200 L1115,365 L1540,250",
     stroke: "hsl(var(--primary))",
     strokeWidth: 2,
     duration: 16,
@@ -60,7 +63,7 @@ const paths = [
     peakOpacity: 0.5,
   },
   {
-    d: "M-100,600 L400,600 L60,500 L800,800 L1000,200 L1115,365 L1540,350",
+    d: "M-100,720 L400,720 L315,415 L800,680 L1000,200 L1115,365 L1540,350",
     stroke: "hsl(var(--secondary))",
     strokeWidth: 2,
     duration: 20,
@@ -68,7 +71,7 @@ const paths = [
     peakOpacity: 0.4,
   },
   {
-    d: "M-100,400 L200,280 L600,300 L800,800 L400,600 L1115,365 L1540,450",
+    d: "M-100,400 L200,280 L600,300 L800,680 L400,720 L1115,365 L1540,450",
     stroke: "hsl(var(--primary))",
     strokeWidth: 1.5,
     duration: 18,
@@ -98,12 +101,12 @@ export const ConstellationBg = memo(() => (
       </defs>
       <rect width="100%" height="100%" fill="url(#automation-grid)" />
 
-      {/* Icon nodes with glow */}
-      {nodes.map(({ cx, cy, Icon, type, delay }) => {
+      {/* Icon nodes with glow — mobile-hidden nodes use CSS class */}
+      {nodes.map(({ cx, cy, Icon, type, delay, mobile }) => {
         const glow = type === "primary" ? glowPrimary(delay) : glowSecondary(delay);
         const color = type === "primary" ? "hsl(var(--primary))" : "hsl(var(--secondary))";
         return (
-          <g key={`${cx}-${cy}`}>
+          <g key={`${cx}-${cy}`} className={mobile ? "" : "constellation-desktop"}>
             <motion.circle
               cx={cx}
               cy={cy}
@@ -126,28 +129,30 @@ export const ConstellationBg = memo(() => (
         );
       })}
 
-      {/* Connection paths */}
-      {paths.map((p, i) => (
-        <motion.path
-          key={i}
-          d={p.d}
-          stroke={p.stroke}
-          strokeWidth={p.strokeWidth}
-          fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 1, 1],
-            opacity: [0, p.peakOpacity, p.peakOpacity, 0],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            ease: "linear",
-            delay: p.delay,
-            times: [0, 0.7, 0.9, 1],
-          }}
-        />
-      ))}
+      {/* Connection paths — hidden on mobile */}
+      <g className="constellation-desktop">
+        {paths.map((p, i) => (
+          <motion.path
+            key={i}
+            d={p.d}
+            stroke={p.stroke}
+            strokeWidth={p.strokeWidth}
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{
+              pathLength: [0, 1, 1, 1],
+              opacity: [0, p.peakOpacity, p.peakOpacity, 0],
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              ease: "linear",
+              delay: p.delay,
+              times: [0, 0.7, 0.9, 1],
+            }}
+          />
+        ))}
+      </g>
     </svg>
   </div>
 ));
